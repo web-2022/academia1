@@ -1,0 +1,17 @@
+.fondo {
+    background: linear-gradient(to top, #1C7CE0, #150051);
+    /* Azul degradado */
+
+}
+
+.special-menu .nav-item a:hover {
+    color: #ffdd57;  /* Color diferente al pasar el mouse */
+    text-decoration: underline;  /* Subrayado al pasar el mouse */
+}
+
+.special-menu {
+    font-size: 2rem;  /* Tamaño de fuente más grande */
+    font-weight: bold;  /* Negrita */
+    color: #ffc107;  /* Color amarillo (Bootstrap warning color) */
+    text-transform: uppercase;  /* Texto en mayúsculas */
+}

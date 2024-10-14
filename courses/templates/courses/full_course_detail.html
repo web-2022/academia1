@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ course.title }}</title>
+</head>
+<body>
+    <h1>{{ course.title }}</h1>
+    <p>{{ course.description }}</p>
+
+    <h2>Capítulos Completos</h2>
+    <ul>
+        {% for chapter in chapters %}
+            <li>{{ chapter.title }} - {{ chapter.content }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
