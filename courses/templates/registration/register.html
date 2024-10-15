@@ -54,14 +54,14 @@
           <ul class="navbar-nav">
               {% if user.is_authenticated %}
               <li class="nav-item">
-                  <a class="nav-link btn btn-success text-white" href="{% url 'logout' %}">Cerrar Sesión</a>
+                  <a class="nav-link btn btn-success text-white m-2" href="{% url 'logout' %}">Cerrar Sesión</a>
               </li>
               {% else %}
               <li class="nav-item">
-                  <a class="nav-link btn btn-primary text-white" href="{% url 'login' %}">Iniciar Sesión</a>
+                  <a class="nav-link btn btn-primary text-white m-2" href="{% url 'login' %}">Iniciar Sesión</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link btn btn-info text-white" href="{% url 'register' %}">Registrarse</a>
+                  <a class="nav-link btn btn-info text-white m-2" href="{% url 'register' %}">Registrarse</a>
               </li>
               {% endif %}
           </ul>
@@ -72,7 +72,7 @@
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Registrar</button>
+        <button type="submit" class="btn btn-primary m-2">Registrar</button>
     </form>
     <p>¿Ya tienes una cuenta? <a href="{% url 'login' %}">Inicia sesión</a>.</p>
 </body>
