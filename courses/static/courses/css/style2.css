@@ -10,8 +10,8 @@
 }
 
 .special-menu {
-    font-size: 1rem;  /* Tamaño de fuente más grande */
+    font-size: 1.5rem;  /* Tamaño de fuente más grande */
     font-weight: bold;  /* Negrita */
     color: #ffc107;  /* Color amarillo (Bootstrap warning color) */
-    /* text-transform: uppercase;  Texto en mayúsculas */
+    text-transform: uppercase;  /*Texto en mayúsculas */
 }
