@@ -61,6 +61,9 @@
           {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link btn btn-success text-white m-2" href="{% url 'logout' %}">Cerrar Sesión</a>
+            <p class="text-light" style="margin-top: 5px;">
+              Hola, {{ user.username }}, bienvenido...
+          </p>
           </li>
           {% else %}
           <li class="nav-item">
@@ -95,15 +98,22 @@
 
     <!-- Capítulos bloqueados (solo visibles si el curso no está comprado) -->
     {% if not has_purchased %}
-   
+
     <ul>
       {% for chapter in locked_chapters %}
       <li>
         <h3>
-          {{ chapter.title }} - Este capítulo está bloqueado.
-          <a href="{% url 'register' %}">Regístrate</a> para continuar.
-          <a href="{% url 'login' %}">Inicia sesión</a> para continuar.
+          {{ chapter.title }}
         </h3>
+
+        <h4>
+          - Este capítulo está bloqueado.
+          <a href="{% url 'register' %}">Regístrate</a> para continuar o
+          <a href="{% url 'login' %}">Inicia sesión</a> para continuar.
+
+
+        </h4>
+
       </li>
       {% endfor %}
     </ul>

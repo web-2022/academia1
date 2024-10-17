@@ -58,3 +58,10 @@ def register(request):
         form = UserCreationForm()
 
     return render(request, 'registration/register.html', {'form': form})
+
+#Bienvenida al usuario
+def bienvenida (request):
+    context = {
+        'user': request.user # Aquí pasando el usuario al contexto
+    }
+    return render(request,'courses/course_detail.html',context)

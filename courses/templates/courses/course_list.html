@@ -54,11 +54,14 @@
                     <a class="nav-link" href="#">Pre</a>
                 </li>
             </ul>
-
+<!-- Botones de Cerrar, iniciar y registrate -->
             <ul class="navbar-nav">
                 {% if user.is_authenticated %}
-                <li class="nav-item">
+                <li class="nav-item d-flex flex-column">
                     <a class="nav-link btn btn-success text-white m-2" href="{% url 'logout' %}">Cerrar Sesión</a>
+                    <p class="text-light" style="margin-top: 5px;">
+                        Hola, {{ user.username }}, bienvenido...
+                    </p>
                 </li>
                 {% else %}
                 <li class="nav-item">
@@ -74,7 +77,7 @@
 
     <!-- Contenido de la página -->
     <div class="container mt-5">
-        <h1 class="text-primary">Cursos Disponibles</h1>
+        <h1 class="text-primary">Aprende y practica...</h1>
         <ul>
             {% for course in courses %}
             <li>
