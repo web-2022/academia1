@@ -1,7 +1,7 @@
 # apps/courses/views.py
 
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Course, Chapter, Purchase
+from .models import Course, Chapter, Purchase, Ciclo
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
@@ -65,3 +65,8 @@ def bienvenida (request):
         'user': request.user # Aquí pasando el usuario al contexto
     }
     return render(request,'courses/course_detail.html',context)
+
+#Bienvenida al usuario
+def inicio (request): 
+    ciclos = Ciclo.objects.all() # obtenemos todos los ciclos   
+    return render(request,'courses/inicio.html', {'ciclos': ciclos})

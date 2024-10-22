@@ -29,3 +29,12 @@ class Purchase(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     purchased_at = models.DateTimeField(auto_now_add=True)
+
+class Ciclo(models.Model):
+    titulo = models.CharField(max_length=200)
+    subtitulo = models.CharField(max_length=200, blank=True)
+    descripcion = models.TextField()
+    imagen = models.ImageField(upload_to='courses/img/', blank=True)  # Guardará las imágenes en la carpeta 'ciclos/'
+
+    def __str__(self):
+        return self.titulo
