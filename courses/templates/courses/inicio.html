@@ -8,55 +8,55 @@
  <!-- Hero Section -->
  <div class="hero">
     <div class="container">
-        <h1 class="display-4">Aprende Jugando</h1>
+        <h1 class="display-3">Te preparamos para ingresar a la universidad</h1>
         <p class="lead mt-4">Descubre una nueva forma de aprender mientras te diviertes con nuestros juegos educativos.</p>
-        <a href="#" class="cta-button mt-4">Empieza Ahora</a>
+        <!-- <a href="#" class="cta-button mt-4">Empieza Ahora</a> -->
+        
     </div>
 </div>
+
 
 <!-- Courses Section -->
 <section class="py-5 text-center">
     <div class="container">
         <h2 class="mb-5">Nuestros Cursos Más Populares</h2>
+        
         <div class="row">
-            {% for ciclo in ciclos %}
+            {% for inicio in inicios %}
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
-                    <img src="{{ciclo.image.url}}" class="card-img-top" alt="{{ciclo.titulo}}">
+                    {% if inicio.imagen %}
+                        <img src="{{ inicio.imagen.url }}" class="card-img-top" alt="{{ inicio.titulo }}">
+                    {% else %}
+                        <img src="#" class="card-img-top" alt="Imagen predeterminada">  <!-- Usar una imagen predeterminada si no hay imagen -->
+                    {% endif %}
                     <div class="card-body">
-                        <h5 class="card-title">{{ ciclo.titulo }}</h5>
-                        <p class="card-text">{{ ciclo.subtitulo }}.</p>
-                        <p class="card-text">{{ ciclo.descripcion|truncatewords:20 }}</p> <!-- Muestra 20 palabras de la descripción -->
+                        <h5 class="card-title" style="font-family: 'Montserrat', sans-serif; font-size: 1.75rem; font-weight: bold; color: #333;">
+                            {{ inicio.titulo }}
+                        </h5>
+                        <p class="card-text text-primary font-weight-bold" style="font-size: 1.25rem; border-left: 4px solid #007bff; padding-left: 10px; margin-bottom: 15px;">
+                            {{ inicio.subtitulo }}
+                        </p>
+                        <p class="card-text" style="font-size: 1rem; color: #555; line-height: 1.6;">
+                            {{ inicio.descripcion|truncatewords:20 }}
+                        </p>
                     </div>
                 </div>
             </div>
-            {%  endfor %}
-            <!-- <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Curso 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Curso 2: Ciencia en Acción</h5>
-                        <p class="card-text">Explora el mundo de la ciencia con experimentos y actividades que despertarán tu curiosidad.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Curso 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Curso 3: Inglés para Niños</h5>
-                        <p class="card-text">Aprende inglés jugando con nuestras actividades interactivas y juegos de vocabulario.</p>
-                    </div>
-                </div>
-            </div> -->
+        {% endfor %}
+  
         </div>
     </div>
 </section>
+<!-- Lapiz -->
+
+<!-- Eslogan -->
+<div class="d-flex typing-container">Te preparamos para ingresar a la universidad . . .</div>
 
 <!-- Footer -->
 <footer class="text-center">
     <div class="container">
-        <p>&copy; 2024 Academia Divertida | Todos los derechos reservados | <a href="#">Política de privacidad</a></p>
+        <p>&copy; 2024 Academia Gamarra | Todos los derechos reservados | <a href="#">Política de privacidad</a></p>
     </div>
 </footer>
 

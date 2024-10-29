@@ -1,7 +1,7 @@
 # apps/courses/views.py
 
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Course, Chapter, Purchase, Ciclo
+from .models import Course, Chapter, Purchase, Inicio, CiclosAcademia
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
@@ -68,5 +68,14 @@ def bienvenida (request):
 
 #Bienvenida al usuario
 def inicio (request): 
-    ciclos = Ciclo.objects.all() # obtenemos todos los ciclos   
-    return render(request,'courses/inicio.html', {'ciclos': ciclos})
+    inicios = Inicio.objects.all() # obtenemos todos los datos de inicio   
+    return render(request,'courses/inicio.html', {'inicios': inicios})
+
+def ciclos (request):  
+    ciclos = CiclosAcademia.objects.all() # obtenemos todos los datos de la tabla CiclosAcademia
+    return render(request,'courses/ciclos.html', {'ciclos': ciclos})
+
+
+def contactanos (request):     
+    return render(request,'courses/contactanos.html')
+

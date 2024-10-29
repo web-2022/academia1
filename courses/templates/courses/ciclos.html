@@ -1,0 +1,89 @@
+{% extends 'courses/base.html' %}
+
+{% block title %}Bienvenidos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="section-title text-center mb-4">Descripción de los Ciclos Escolares</h2>
+    <div class="row">
+        <!-- Ciclos -->
+     {% for  ciclo in ciclos%}
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm p-4 ciclo-container">
+                <img src="{{ciclo.imagen.url}}" alt="Imagen del Ciclo 1" class="img-fluid rounded mb-3">
+                
+                <h4 class="text-primary">Ciclo:</h4>
+                <p>{{ciclo.ciclo}}</p>
+
+                <h4 class="text-primary">Duración</h4>
+                <p>{{ciclo.duracion}}</p>
+
+                <h4 class="text-primary">Dirigido a</h4>
+                <p>{{ciclo.dirigido}}</p>
+
+                <h4 class="text-primary">Objetivos</h4>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check-circle text-success"></i> {{ciclo.objetivos}}</li>
+                    
+                </ul>
+
+                <h4 class="text-primary">Cursos que se enseñarán</h4>
+                <ul class="list-unstyled">
+                    <li>Aritmética</li>
+                    <li>Álgebra</li>
+                    <li>Geometría</li>
+                    <li>Trigonometría</li>
+                    <li>Física</li>
+                    <li>Química</li>
+                </ul>
+
+                <h4 class="text-primary">Temas que se enseñarán</h4>
+                <ul class="list-unstyled">
+                    <li>Operaciones básicas y fracciones (Aritmética)</li>
+                    <li>Resolución de ecuaciones y polinomios (Álgebra)</li>
+                    <li>Áreas y volúmenes de figuras (Geometría)</li>
+                    <li>Funciones trigonométricas y aplicaciones (Trigonometría)</li>
+                    <li>Principios de la mecánica y energía (Física)</li>
+                    <li>Estructura atómica y reacciones químicas (Química)</li>
+                </ul>
+
+                <h4 class="text-primary">Costo del Ciclo</h4>
+                <p><strong>{{ciclo.costo}}</strong> (incluye material didáctico y acceso a laboratorio)</p>
+
+                <h4 class="text-primary">Métodos de Pago</h4>
+                <p>{{ciclo.pago}}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+    </div>
+
+    <h2 class="section-title text-center mt-5">Testimonios</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <p class="testimonial bg-light p-3 border-left border-primary rounded">
+                "Este ciclo escolar ha sido fundamental para mejorar las calificaciones de mi hijo en matemáticas. ¡Los métodos de enseñanza son excelentes!" - Laura García
+            </p>
+        </div>
+        <div class="col-md-4">
+            <p class="testimonial bg-light p-3 border-left border-primary rounded">
+                "Mis hijos se sienten más seguros en sus conocimientos de ciencias. ¡Recomiendo este ciclo a todos los padres!" - Pedro Martínez
+            </p>
+        </div>
+        <div class="col-md-4">
+            <p class="testimonial bg-light p-3 border-left border-primary rounded">
+                "La atención personalizada y los recursos de laboratorio han sido un gran apoyo para el aprendizaje de mis hijos." - Ana Rodríguez
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<style>
+    .ciclo-container {
+        min-height: 900px; /* Ajuste de altura mínima */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+</style>

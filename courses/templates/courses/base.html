@@ -13,14 +13,20 @@
         <!-- Estilos personalizados -->
         <link rel="stylesheet" href="{% static 'courses/css/style2.css' %}">
 
+        <!-- Tipo de letra -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+
         <title>{% block title %}{% endblock %}</title>
     </head>
 
     <body>
         <!-- Menú de navegación CCG-->
-        <nav class="navbar navbar-expand-lg navbar-dark fondo">
+         <!-- fixed-top -->
+         <nav class="navbar navbar-expand-lg navbar-dark fondo fixed-top">
             <img src="{% static 'courses/img/logo.png' %}" alt="" style="height: 100px" />
-            <a class="navbar-brand p-2">Domina las matemáticas...</a>
+            <a class="navbar-brand p-2">Master mathematics...</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -31,32 +37,37 @@
                         <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'course_list' %}">Ciclos</a>
+                        <a class="nav-link" href="{% url 'ciclos' %}">Ciclos</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#">Acerca de</a>
-                    </li> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contáctanos</a>
+                        <a class="nav-link" href="{% url 'course_list' %}">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contactanos' %}">Contáctanos</a>
                     </li>
                 </ul>
-
-                <!-- Palabras resaltadas en el centro del menú -->
-                <ul class="navbar-nav special-menu2">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Inicial</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Primaria</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Secundaria</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pre</a>
-                    </li>
-                </ul>
-
+        
+                <!-- Contenedor para el texto y las palabras resaltadas -->
+                <div class="text-center text-white mx-3">
+                    <div style="font-size: 1.2rem; font-weight: bold;">
+                        PRACTICA Y APRENDE
+                    </div>
+                    <ul class="navbar-nav special-menu2 mt-2">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Inicial</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Primaria</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Secundaria</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pre</a>
+                        </li>
+                    </ul>
+                </div>
+        
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
                     <li class="nav-item">
@@ -76,14 +87,17 @@
                 </ul>
             </div>
         </nav>
-
-
+        
+        
+        
+    
         {% block content %}{% endblock %}
 
         <!-- Bootstrap JS and dependencias -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="{% static 'courses/js/app.js' %}"></script>
 
     </body>
 
