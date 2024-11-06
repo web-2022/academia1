@@ -70,8 +70,8 @@
         
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-success text-white m-2" href="{% url 'logout' %}">Cerrar Sesión</a>
+                    <li class="nav-item justify-content-center align-items-center p-3">
+                        <a class="nav-link btn btn-success text-white m-2 mt-4" href="{% url 'logout' %}">Cerrar Sesión</a>
                         <p class="text-light" style="margin-top: 5px;">
                             Hola, {{ user.username }}, bienvenido...
                         </p>

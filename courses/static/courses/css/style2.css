@@ -4,6 +4,17 @@
 
 }
 
+/* Fondo del menú desplegable */
+.navbar-collapse {
+    background: linear-gradient(to top, #1C7CE0, #150051);
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #ffffff;
+    /* Color de texto para que contraste */
+}
+
+
 .special-menu .nav-item a:hover {
     color: #ffdd57;
     /* Color diferente al pasar el mouse */
@@ -27,34 +38,42 @@ body {
     background-color: #f1f2f6;
     /* Fondo claro */
     color: #333;
+    margin-top: 10vh;
+    /* Asegúrate de que el valor sea igual o mayor a la altura del navbar */
 }
 
 /* Navbar con degradado azul marino */
 .navbar {
-    background: linear-gradient(135deg, #00274d, #003366);
+    background: linear-gradient(to top, #1C7CE0, #150051);
     height: 10vh;
+    z-index: 1030;
+    /* Asegura que el navbar esté por encima de otros elementos */
+
+
 }
 
 /* Hero section */
 .hero {
-    background-color: #3498db;    
+    background-color: #3498db;
     color: white;
     height: 20vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: 10vh;
-    padding-top: 10vh;
-    
-    
+    margin-top: 2vh;
+    padding-top:2vh;
+
 }
 
 .hero h1 {
-    font-size: 4rem;
-    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.4rem;
+    font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
+
+
 
 .cta-button {
     background-color: #ff6f61;
@@ -123,6 +142,47 @@ footer a {
     animation: typing 4s steps(40, end) forwards, blink-cursor 0.7s steps(1) 4s forwards;
 }
 
+ /* Para pantallas pequeñas */
+ @media (max-width: 768px) {
+    .navbar {
+        position: relative;
+        /* O prueba con sticky */
+    }
+    .contenido-principal {
+        margin-top: 10vh; /* Cambia a la altura de tu navbar */
+    }
+
+    .hero {
+        
+        padding-top: 1vh; /* Reduce el padding superior */
+        margin-top: 1vh; /* Reduce el margen superior */
+    }
+    
+    .display-3 {
+        font-size: 2.5rem; /* Reduce el tamaño de la fuente */
+    }
+
+   
+}
+
+/* Media query para pantallas extra pequeñas */
+@media (max-width: 480px) {
+    .display-3 {
+        font-size: 2rem; /* Tamaño de fuente aún más pequeño en pantallas pequeñas */
+    }
+
+    .hero h1 {
+        font-size: 2.5rem; /* Ajuste adicional en tamaño */
+    }
+
+    .hero {
+        padding-top: 2vh;
+        margin-top: 2vh;
+    }
+}
+
+
+
 /* Animación de escritura */
 @keyframes typing {
     from {
@@ -149,3 +209,5 @@ footer a {
     }
 
     /* Mantiene el cursor invisible al final */
+
+}
