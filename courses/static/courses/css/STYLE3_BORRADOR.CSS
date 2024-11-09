@@ -5,7 +5,10 @@
 }
 
 
-
+.navbar-collapse {
+    background: linear-gradient(to top, #1C7CE0, #150051);
+    /* Fondo del menú desplegable*/
+}
 
 
 
@@ -37,7 +40,15 @@ body {
     /* Asegúrate de que el valor sea igual o mayor a la altura del navbar */
 }
 
+/* Navbar con degradado azul marino */
+.navbar {
+    background: linear-gradient(to top, #1C7CE0, #150051);
+    height: 10vh;
+    z-index: 1030;
+    /* Asegura que el navbar esté por encima de otros elementos */
 
+
+}
 
 /* Hero section */
 .hero {

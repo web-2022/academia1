@@ -1,133 +1,46 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ciclos de la Academia</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-            font-family: 'Poppins', sans-serif;
-        }
-        .header {
-            background-color: #007bff;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-        .card {
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-        .card-header {
-            background-color: #007bff;
-            color: white;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-        }
-        .btn-custom {
-            background-color: #28a745;
-            color: white;
-        }
-        .btn-custom:hover {
-            background-color: #218838;
-        }
-        .testimonial {
-            background-color: #f8f9fa; /* Color de fondo suave para los testimonios */
-            border-left: 5px solid #007bff; /* Borde izquierdo azul */
-            padding: 10px 15px;
-            margin-top: 15px;
-            border-radius: 5px; /* Esquinas redondeadas */
-        }
-    </style>
+    <title>Ejemplo de Navbar con Imagen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <!-- Logo o Imagen Placeholder -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="https://via.placeholder.com/40" alt="Logo" width="40" height="40" class="rounded-circle me-2">
+                MiSitio
+            </a>
+            
+            <!-- Botón colapsable para móviles -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-    <header class="header">
-        <h1>Ciclos de la Academia</h1>
-        <p>Prepárate para alcanzar tus metas educativas</p>
-    </header>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="card-title">Ciclo de Desarrollo Web</h2>
-                    </div>
-                    <div class="card-body">
-                        <img src="https://via.placeholder.com/800x400?text=Desarrollo+Web" class="img-fluid" alt="Desarrollo Web">
-                        
-                        <h5 class="card-subtitle mb-2 text-muted">Duración: <strong>6 meses</strong></h5>
-                        <h5 class="card-subtitle mb-2 text-muted">Dirigido a: <strong>Estudiantes, Profesionales y Entusiastas</strong></h5>
-                        
-                        <h5 class="card-title">Objetivos:</h5>
-                        <ul>
-                            <li>Desarrollar habilidades en programación web.</li>
-                            <li>Fomentar el trabajo en equipo y la resolución de problemas.</li>
-                            <li>Preparar a los estudiantes para el mercado laboral.</li>
-                        </ul>
-
-                        <h5 class="card-title">Cursos Incluidos:</h5>
-                        <ul>
-                            <li>HTML y CSS</li>
-                            <li>JavaScript y jQuery</li>
-                            <li>Desarrollo Backend con Node.js</li>
-                            <li>Frameworks Frontend (React, Bootstrap)</li>
-                        </ul>
-
-                        <h5 class="card-title">Temas a Tratar:</h5>
-                        <ul>
-                            <li>Diseño Responsivo</li>
-                            <li>Manipulación del DOM</li>
-                            <li>Integración de APIs</li>
-                            <li>Bases de Datos (MongoDB)</li>
-                        </ul>
-
-                        <h5 class="card-title">Ejemplos de lo que se enseñará:</h5>
-                        <ul>
-                            <li>Creación de un sitio web desde cero.</li>
-                            <li>Desarrollo de una aplicación web interactiva.</li>
-                            <li>Implementación de sistemas de autenticación.</li>
-                        </ul>
-
-                        <h5 class="card-title">Costo del Ciclo:</h5>
-                        <p><strong>$500</strong></p>
-
-                        <h5 class="card-title">Métodos de Pago:</h5>
-                        <ul>
-                            <li>Transferencia Bancaria</li>
-                            <li>Tarjeta de Crédito/Débito</li>
-                            <li>Paypal</li>
-                        </ul>
-
-                        <h5 class="card-title">¿Por qué estudiar en este ciclo?</h5>
-                        <p>Este ciclo está diseñado para proporcionar una formación práctica y efectiva que te permitirá desarrollarte en el mundo de la tecnología. Además, contarás con instructores calificados y acceso a recursos exclusivos.</p>
-
-                        <a href="#" class="btn btn-custom">¡Inscríbete Ahora!</a>
-
-                        <h5 class="card-title mt-4">Testimonios de Estudiantes</h5>
-                        <div class="testimonial">
-                            <p><strong>Juan Pérez</strong></p>
-                            <p>"Este ciclo me ha cambiado la vida. Ahora tengo las habilidades necesarias para conseguir un buen empleo en el sector tecnológico."</p>
-                        </div>
-                        <div class="testimonial">
-                            <p><strong>María López</strong></p>
-                            <p>"Los instructores son muy capacitados y siempre están dispuestos a ayudar. ¡Recomiendo este ciclo a todos!"</p>
-                        </div>
-                        <div class="testimonial">
-                            <p><strong>Carlos Sánchez</strong></p>
-                            <p>"La experiencia de aprender a desarrollar aplicaciones web fue increíble. Aprendí mucho en poco tiempo."</p>
-                        </div>
-                    </div>
-                </div>
+            <!-- Links del menú -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Acerca</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
