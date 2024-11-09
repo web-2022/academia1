@@ -17,6 +17,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 
+        <!-- CDN de Font Awesome para el ícono de WP-->
+<       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
 
         <title>{% block title %}{% endblock %}</title>
     </head>
@@ -102,6 +106,11 @@
 
 
         {% block content %}{% endblock %}
+
+            <!-- Enlace flotante de WhatsApp -->
+    <a href="https://wa.me/51950990891" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
         <!-- Bootstrap JS and dependencias -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

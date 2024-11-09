@@ -5,11 +5,6 @@
 }
 
 
-
-
-
-
-
 .special-menu .nav-item a:hover {
     color: #ffdd57;
     /* Color diferente al pasar el mouse */
@@ -42,22 +37,19 @@ body {
 /* Hero section */
 .hero {
     background-color: #3498db;
-    color: white;
-    height: 20vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-top: 2vh;
-    padding-top:2vh;
+    height: 13vh;
+
 
 }
 
 .hero h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 3.4rem;
+    font-size: 6vh;
     font-weight: bold;
+    word-wrap: break-word;
+    /* Permitir que el texto se divida si es necesario */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
 }
 
 
@@ -129,45 +121,90 @@ footer a {
     animation: typing 4s steps(40, end) forwards, blink-cursor 0.7s steps(1) 4s forwards;
 }
 
- /* Para pantallas pequeñas */
- @media (max-width: 768px) {
+
+.whatsapp-float {
+    position: fixed;
+    /* Mantenerlo fijo en la pantalla */
+    bottom: 20px;
+    /* Distancia desde la parte inferior de la pantalla */
+    right: 20px;
+    /* Distancia desde el lado derecho de la pantalla */
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    /* Hace que el icono sea circular */
+    padding: 15px;
+    font-size: 24px;
+    /* Tamaño del icono */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    /* Sombra */
+    text-decoration: none;
+    z-index: 1000;
+    /* Asegura que esté sobre otros elementos */
+}
+
+/* Efecto al pasar el cursor */
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    /* Cambia a un tono más oscuro de verde al pasar el cursor */
+}
+
+.ajustar-imagen {
+
+    height: 300px;
+    /* Altura fija para todas las imágenes */
+    object-fit: cover;
+    /* Cubre el área de la imagen manteniendo la proporción */
+    border-radius: 8px 8px 0 0;
+    /* Opcional: bordes redondeados en la parte superior */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2),
+        inset 1px 1px 5px rgba(255, 255, 255, 0.6);
+    /* Sombra exterior y efecto 3D */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* Borde suave */
+}
+
+
+/* Para pantallas pequeñas */
+@media (max-width: 768px) {
     .navbar {
         position: relative;
         /* O prueba con sticky */
     }
+
+    .hero h1 {
+        font-size: 4vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+
     .contenido-principal {
-        margin-top: 10vh; /* Cambia a la altura de tu navbar */
+        margin-top: 10vh;
+        /* Cambia a la altura de tu navbar */
     }
 
-    .hero {
-        
-        padding-top: 1vh; /* Reduce el padding superior */
-        margin-top: 1vh; /* Reduce el margen superior */
-    }
-    
-    .display-3 {
-        font-size: 2.5rem; /* Reduce el tamaño de la fuente */
-    }
 
-   
+
+
+
+
 }
 
 /* Media query para pantallas extra pequeñas */
 @media (max-width: 480px) {
-    .display-3 {
-        font-size: 2rem; /* Tamaño de fuente aún más pequeño en pantallas pequeñas */
-    }
-
     .hero h1 {
-        font-size: 2.5rem; /* Ajuste adicional en tamaño */
-    }
-
-    .hero {
-        padding-top: 2vh;
-        margin-top: 2vh;
+        font-size: 3.5vh;
+        /* Reducir aún más el tamaño del texto */
     }
 }
 
+
+/* Media query para pantallas extra pequeñas */
+@media (max-width: 320px) {
+    .hero h1 {
+        font-size: 3vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+}
 
 
 /* Animación de escritura */

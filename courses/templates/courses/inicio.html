@@ -6,35 +6,40 @@
 {% block content %}
 <!-- Contenido de la página inicio -->
 
- <!-- Hero Section -->
- <div class="hero">
+<!-- Hero Section -->
+
+<div class="hero d-flex align-items-center justify-content-center text-center py-5">
     <div class="container">
-        <h1 class="display-3">Ingresa a la universidad con nosotros..</h1>
-        
-        <!-- <a href="#" class="cta-button mt-4">Empieza Ahora</a> -->
+        <h1 href="#"  class="display-3 text-white">Ingresa a la universidad con nosotros..</h1>
+
         
     </div>
 </div>
+
 
 <!-- Cursos a ofrecer -->
 <section class="py-5 text-center">
     <div class="container">
         <h2 class="mb-5">Nuestros Cursos Más Populares</h2>
-        
+
         <div class="row">
             {% for inicio in inicios %}
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100">
                     {% if inicio.imagen %}
-                        <img src="{{ inicio.imagen.url }}" class="card-img-top" alt="{{ inicio.titulo }}">
+                    <img src="{{ inicio.imagen.url }}" class="card-img-top img-fluid ajustar-imagen"
+                        alt="{{ inicio.titulo }}">
                     {% else %}
-                        <img src="#" class="card-img-top" alt="Imagen predeterminada">  <!-- Usar una imagen predeterminada si no hay imagen -->
+                    <img src="#" class="card-img-top" alt="Imagen predeterminada">
+                    <!-- Usar una imagen predeterminada si no hay imagen -->
                     {% endif %}
                     <div class="card-body">
-                        <h5 class="card-title" style="font-family: 'Montserrat', sans-serif; font-size: 1.75rem; font-weight: bold; color: #333;">
+                        <h5 class="card-title"
+                            style="font-family: 'Montserrat', sans-serif; font-size: 1.75rem; font-weight: bold; color: #333;">
                             {{ inicio.titulo }}
                         </h5>
-                        <p class="card-text text-primary font-weight-bold" style="font-size: 1.25rem; border-left: 4px solid #007bff; padding-left: 10px; margin-bottom: 15px;">
+                        <p class="card-text text-primary font-weight-bold"
+                            style="font-size: 1.25rem; border-left: 4px solid #007bff; padding-left: 10px; margin-bottom: 15px;">
                             {{ inicio.subtitulo }}
                         </p>
                         <p class="card-text" style="font-size: 1rem; color: #555; line-height: 1.6;">
@@ -43,8 +48,8 @@
                     </div>
                 </div>
             </div>
-        {% endfor %}
-  
+            {% endfor %}
+
         </div>
     </div>
 </section>
