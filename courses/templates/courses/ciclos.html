@@ -10,11 +10,13 @@
      {% for  ciclo in ciclos%}
         <div class="col-md-6 mb-4">
             <div class="card shadow-sm p-4 ciclo-container">
-                <img src="{{ciclo.imagen.url}}" alt="Imagen del Ciclo 1" class="img-fluid rounded mb-3">
-                
-                <h4 class="text-primary">Ciclo:</h4>
-                <p>{{ciclo.ciclo}}</p>
+                <h4 class="text-primary fw-bold">Ciclo:</h4>
+                <p class="titulo-ciclo ciclo-nombre"><span >{{ ciclo.ciclo }}</span></p>
 
+
+                <img src="{{ciclo.imagen.url}}" alt="Imagen del Ciclo 1" class="img-fluid rounded mb-3">
+
+  
                 <h4 class="text-primary">Duración</h4>
                 <p>{{ciclo.duracion}}</p>
 
