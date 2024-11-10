@@ -1,3 +1,11 @@
+/* Resetear estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
 .fondo {
     background: linear-gradient(to top, #1C7CE0, #150051);
     /* Azul degradado */
@@ -28,8 +36,6 @@ body {
     background-color: #f1f2f6;
     /* Fondo claro */
     color: #333;
-    margin-top: 10vh;
-    /* Asegúrate de que el valor sea igual o mayor a la altura del navbar */
 }
 
 
@@ -37,18 +43,20 @@ body {
 /* Hero section */
 .hero {
     background-color: #3498db;
-    height: 13vh;
+    height: 2vh;
+  
 
 
 }
 
 .hero h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 6vh;
+    font-family: 'Montserrat', sans-serif;  
+     
     font-weight: bold;
     word-wrap: break-word;
     /* Permitir que el texto se divida si es necesario */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    
 
 }
 
@@ -164,59 +172,8 @@ footer a {
     /* Borde suave */
 }
 
-@media (max-width: 1200px) {
-    .navbar {
-        position: relative;
-        /* O prueba con sticky */
-    }
-
-    .hero h1 {
-        font-size: 3.8vh;
-        /* Reducir aún más el tamaño del texto */
-    }
-}
-@media (max-width: 992px) {
-    .navbar {
-        position: relative;
-        /* O prueba con sticky */
-    }
-
-    .hero h1 {
-        font-size: 3.8vh;
-        /* Reducir aún más el tamaño del texto */
-    }
-}
-
-@media (max-width: 768px) {
-    .navbar {
-        position: relative;
-        /* O prueba con sticky */
-    }
-
-    .hero h1 {
-        font-size: 3.8vh;
-        /* Reducir aún más el tamaño del texto */
-    }
-}
-/* Para pantallas pequeñas */
-@media (max-width: 576px) {
-    
-
-    .hero h1 {
-        font-size: 3.7vh;
-        /* Reducir aún más el tamaño del texto */
-    }
-}
-
-/* Media query para pantallas extra pequeñas */
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 3.5vh;
-        /* Reducir aún más el tamaño del texto */
-    }
-}
-
-
+/* ---------------------------------uso de media queries----------------------- */
+/* PARA CELULARES */
 /* Media query para pantallas extra pequeñas */
 @media (max-width: 320px) {
     .hero h1 {
@@ -225,8 +182,125 @@ footer a {
     }
 }
 
+/* Media query para pantallas extra pequeñas */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 3vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+}
 
-/* Animación de escritura */
+/* Para pantallas pequeñas */
+@media (max-width: 576px) {
+
+
+    .hero h1 {
+        font-size: 3.7vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar {
+        position: relative;
+        /* O prueba con sticky */
+    }
+
+    .hero h1 {
+        font-size: 3.8vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+}
+
+/* PARA TABLETS */
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar {
+        position: relative;
+        /* O prueba con sticky */
+        .typing-container {
+            font-size: 6vw; /* Fuente más pequeña en dispositivos pequeños */
+        }
+    }
+
+    .hero h1 {
+        font-size: 4vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+
+
+
+}
+
+@media (min-width: 992px) and (max-width: 1024px) {
+    .navbar {
+        position: relative;
+        /* O prueba con sticky */
+    }
+
+    .hero h1 {
+        font-size: 4.5vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+    .typing-container {
+        font-size: 3vw;
+    }
+}
+
+
+/* PARA DISPOSITIVOS GRANDES--ESCRITORIOS */
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+    .navbar {
+        position: relative;
+        /* O prueba con sticky */
+    }
+
+    .hero h1 {
+        font-size: 4.5vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+
+}
+
+@media (min-width: 1201px) and (max-width: 1600px) {
+    .navbar {
+        position: relative;
+        /* O prueba con sticky */
+    }
+
+    .hero h1 {
+        font-size: 4.5vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+
+}
+
+/* PARA DISPOSITIVOS EXTRA GRANDES (Monitorees y TV 4K) */
+
+@media (min-width: 1601px) {
+    .navbar {
+        position: relative;
+        /* O prueba con sticky */
+    }
+
+    .hero h1 {
+        font-size: 5vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+/* Animación de escritura ---------------------------------------------------*/
 @keyframes typing {
     from {
         width: 0;
