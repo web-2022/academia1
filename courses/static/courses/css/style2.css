@@ -112,7 +112,8 @@ footer a {
 /* Eslogan */
 
 .typing-container {
-    width: 100%;
+    max-width: 100%;
+    word-wrap: break-word;
     /* Asegura que el contenedor ocupe el 100% del ancho */
     text-align: center;
     /* Centra el texto horizontalmente */
@@ -215,6 +216,11 @@ footer a {
         font-size: 3vh;
         /* Reducir aún más el tamaño del texto */
     }
+    .typing-container {
+        max-width: 100%;
+        word-wrap: break-word;
+       
+    }
 }
 
 /* Media query para pantallas extra pequeñas */
@@ -222,6 +228,12 @@ footer a {
     .hero h1 {
         font-size: 3vh;
         /* Reducir aún más el tamaño del texto */
+    }
+
+    .typing-container {
+        max-width: 100%;
+        word-wrap: break-word;
+       
     }
 }
 
@@ -233,6 +245,12 @@ footer a {
         font-size: 3.7vh;
         /* Reducir aún más el tamaño del texto */
     }
+
+    .typing-container {
+        max-width: 100%;
+        word-wrap: break-word;
+       
+    }
 }
 
 @media (max-width: 767px) {
@@ -241,12 +259,16 @@ footer a {
         /* O prueba con sticky */
     }
 
+
     .hero h1 {
         font-size: 3.8vh;
         /* Reducir aún más el tamaño del texto */
     }
     .typing-container {
         font-size: 6vw; /* Fuente más pequeña en dispositivos pequeños */
+        max-width: 100%;
+        word-wrap: break-word;
+
     }
 
     .ciclo-container {

@@ -11,9 +11,10 @@ class Course(models.Model):
         choices=[('beginner', 'Principiante'), ('intermediate', 'Intermedio'), ('advanced', 'Avanzado')], 
         verbose_name='Nivel'
     )
-    price = models.DecimalField(max_digits=6, decimal_places=2, verbose_name='Precio')
+    price = models.DecimalField(max_digits=6, decimal_places=0, verbose_name='Precio')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
-
+    imagen = models.ImageField(upload_to='courses/img/', blank=True, null=True)  # Guardará las imágenes en la carpeta 'courses/'
+    
     def __str__(self):
         return self.title
 
@@ -22,6 +23,11 @@ class Chapter(models.Model):
     content = models.TextField()  # Aquí puedes usar TextField, pero en una implementación más compleja podrías manejar archivos o videos.
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='chapters')
     order = models.IntegerField()  # Para ordenar los capítulos 
+    url_recursos = models.URLField(blank=True, null=True)
+    fecha_publicacion = models.DateTimeField(blank=True, null=True)
+    video_url = models.URLField(blank=True, null=True)
+    audio_url = models.URLField(blank=True, null=True)
+    
     class Meta:
         verbose_name = "Capítulos"
         verbose_name_plural = "Capítulos"
