@@ -164,8 +164,29 @@ footer a {
     /* Borde suave */
 }
 
+@media (max-width: 1200px) {
+    .navbar {
+        position: relative;
+        /* O prueba con sticky */
+    }
 
-/* Para pantallas pequeñas */
+    .hero h1 {
+        font-size: 3.8vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+}
+@media (max-width: 992px) {
+    .navbar {
+        position: relative;
+        /* O prueba con sticky */
+    }
+
+    .hero h1 {
+        font-size: 3.8vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+}
+
 @media (max-width: 768px) {
     .navbar {
         position: relative;
@@ -173,20 +194,18 @@ footer a {
     }
 
     .hero h1 {
-        font-size: 4vh;
+        font-size: 3.8vh;
         /* Reducir aún más el tamaño del texto */
     }
+}
+/* Para pantallas pequeñas */
+@media (max-width: 576px) {
+    
 
-    .contenido-principal {
-        margin-top: 10vh;
-        /* Cambia a la altura de tu navbar */
+    .hero h1 {
+        font-size: 3.7vh;
+        /* Reducir aún más el tamaño del texto */
     }
-
-
-
-
-
-
 }
 
 /* Media query para pantallas extra pequeñas */
