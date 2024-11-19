@@ -30,6 +30,8 @@ urlpatterns = [
 # URLs de autenticación (usando las vistas genéricas de Django)
     path('login/', auth_views.LoginView.as_view(), name='login'),  # URL para la vista de login
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),  # URL para la vista de logout
+    
+
 ]
 
 if settings.DEBUG:

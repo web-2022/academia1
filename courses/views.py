@@ -79,3 +79,14 @@ def ciclos (request):
 def contactanos (request):     
     return render(request,'courses/contactanos.html')
 
+# Generando vistas dinámicas
+def capitulo(request, capitulo_id):
+    # Se genera el nombre del archivo de la plantilla basado en el id del capítulo
+    template_name = f'3años/capitulo_{capitulo_id}.html'
+    
+    try:
+        # Se renderiza la plantilla correspondiente
+        return render(request, template_name)
+    except Exception as e:
+        # Si el archivo no existe, puedes manejarlo (por ejemplo, mostrando una página de error)
+        return render(request, 'courses/404.html', {'error': str(e)})

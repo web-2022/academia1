@@ -15,6 +15,11 @@ class Course(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
     imagen = models.ImageField(upload_to='courses/img/', blank=True, null=True)  # Guardará las imágenes en la carpeta 'courses/'
     
+    class Meta:
+        verbose_name = "Curso"
+        verbose_name_plural = "Cursos"
+        ordering = ["title"] 
+        
     def __str__(self):
         return self.title
 
