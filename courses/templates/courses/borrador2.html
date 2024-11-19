@@ -1,0 +1,130 @@
+<!-- SUMAS -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aprendamos a Sumar</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(to bottom, #f9fbe7, #e8f5e9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      color: #4caf50;
+      font-size: 2.5rem;
+    }
+
+    .question {
+      font-size: 2rem;
+      color: #6a1b9a;
+      margin: 20px 0;
+    }
+
+    .option-btn {
+      margin: 10px;
+      padding: 15px 30px;
+      font-size: 1.5rem;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      transition: background 0.3s, transform 0.2s;
+      cursor: pointer;
+    }
+
+    .option-btn:hover {
+      background: #388e3c;
+      transform: scale(1.1);
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    #reward {
+      font-size: 2rem;
+      color: #ff9800;
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>¡Aprendamos a Sumar!</h1>
+    <div class="question" id="question">¿Cuánto es 2 + 3?</div>
+    <div id="options" class="mt-4"></div>
+    <div id="result"></div>
+    <div id="reward">¡Muy bien! 🌟</div>
+  </div>
+
+  <script>
+    function generateSumQuestion() {
+      const questionElement = document.getElementById('question');
+      const optionsContainer = document.getElementById('options');
+      const resultContainer = document.getElementById('result');
+      const reward = document.getElementById('reward');
+
+      // Reset containers
+      optionsContainer.innerHTML = '';
+      resultContainer.textContent = '';
+      reward.style.display = 'none';
+
+      // Generate random numbers for the sum
+      const num1 = Math.floor(Math.random() * 5) + 1; // Numbers between 1 and 5
+      const num2 = Math.floor(Math.random() * 5) + 1;
+      const correctAnswer = num1 + num2;
+
+      // Update the question
+      questionElement.textContent = `¿Cuánto es ${num1} + ${num2}?`;
+
+      // Generate options (including the correct answer)
+      const options = new Set();
+      while (options.size < 4) {
+        const randomOption = Math.floor(Math.random() * 10) + 1; // Random options
+        options.add(randomOption);
+      }
+      options.add(correctAnswer);
+
+      // Shuffle and display options
+      const shuffledOptions = Array.from(options).sort(() => Math.random() - 0.5);
+      shuffledOptions.forEach(option => {
+        const button = document.createElement('button');
+        button.className = 'option-btn';
+        button.textContent = option;
+
+        button.addEventListener('click', () => {
+          if (option === correctAnswer) {
+            resultContainer.textContent = '¡Correcto!';
+            reward.style.display = 'block';
+            setTimeout(() => generateSumQuestion(), 3000);
+          } else {
+            resultContainer.textContent = 'Inténtalo de nuevo.';
+          }
+        });
+
+        optionsContainer.appendChild(button);
+      });
+    }
+
+    // Generate the first question on load
+    generateSumQuestion();
+  </script>
+</body>
+</html>

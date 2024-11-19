@@ -3,6 +3,8 @@ body {
     font-family: Arial, sans-serif;
   }
 
+
+
   .container {
     margin-top: 20px;
     text-align: center;
@@ -51,5 +53,73 @@ body {
   .feedback {
     font-weight: bold;
     font-size: 1.5rem;
+    margin-top: 20px;
+  }
+
+
+  /* SUMAS */
+
+ 
+
+  .question-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+  }
+
+  .shapes-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .shape {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+  }
+
+  .circle {
+    background-color: #ffab91;
+    border-radius: 50%;
+  }
+
+  .square {
+    background-color: #4fc3f7;
+  }
+
+  .options-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .option-btn {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    transition: background 0.3s, transform 0.2s;
+    cursor: pointer;
+  }
+
+  .option-btn:hover {
+    background: #388e3c;
+    transform: scale(1.1);
+  }
+
+  #result {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  #reward {
+    font-size: 2rem;
+    color: #ff9800;
+    display: none;
     margin-top: 20px;
   }
