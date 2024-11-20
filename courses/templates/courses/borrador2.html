@@ -1,130 +1,204 @@
-<!-- SUMAS -->
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aprendamos a Sumar</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-  <style>
-    body {
-      background: linear-gradient(to bottom, #f9fbe7, #e8f5e9);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-    }
+  <title>Aprender los Números: 1 al 10</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    .container {
-      text-align: center;
+  <style>
+    /* General Styling */
+    body {
+      background-color: #f7f8fc;
+      font-family: 'Arial', sans-serif;
+      color: #343a40;
+      margin: 0;
+      padding: 0;
     }
 
     h1 {
-      color: #4caf50;
-      font-size: 2.5rem;
-    }
-
-    .question {
-      font-size: 2rem;
-      color: #6a1b9a;
-      margin: 20px 0;
-    }
-
-    .option-btn {
-      margin: 10px;
-      padding: 15px 30px;
-      font-size: 1.5rem;
-      background: #4caf50;
-      color: white;
-      border: none;
-      border-radius: 15px;
-      transition: background 0.3s, transform 0.2s;
-      cursor: pointer;
-    }
-
-    .option-btn:hover {
-      background: #388e3c;
-      transform: scale(1.1);
-    }
-
-    #result {
-      margin-top: 20px;
-      font-size: 1.5rem;
+      font-size: 3rem;
+      color: #007bff;
       font-weight: bold;
     }
 
-    #reward {
-      font-size: 2rem;
-      color: #ff9800;
-      display: none;
+    .number-btn {
+      font-size: 2.5rem;
+      width: 80px;
+      height: 80px;
+      margin: 15px;
+      border-radius: 50%;
+      background-color: #ff5722;
+      color: white;
+      display: inline-block;
+      text-align: center;
+      line-height: 80px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      border: 2px solid #fff;
+    }
+
+    .number-btn:hover {
+      background-color: #ff3d00;
+      transform: scale(1.1);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+    }
+
+    .number-btn:focus {
+      outline: none;
+    }
+
+    /* Animación y distribución de pelotas */
+    .ball {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #4caf50; /* Cambio de color a verde */
+      position: absolute;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), inset 0 4px 6px rgba(0, 0, 0, 0.1);
+      animation: ball-animation 1.5s ease-out forwards;
+      transform: translateZ(0); /* Asegura que se vea bien en 3D */
+    }
+
+    @keyframes ball-animation {
+      0% {
+        transform: scale(0) translate(0, 0);
+      }
+      100% {
+        transform: scale(1) translate(0, 0);
+      }
+    }
+
+    #rectangle-container {
+      position: relative;
+      width: 80%;
+      height: 300px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      border: 5px solid #007bff;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Feedback message */
+    .feedback {
       margin-top: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #28a745;
+    }
+
+    .btn-container {
+      margin: 40px 0;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Animación de texto */
+    .animated-text {
+      animation: text-animation 2s ease-in-out;
+    }
+
+    @keyframes text-animation {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <h1>¡Aprendamos a Sumar!</h1>
-    <div class="question" id="question">¿Cuánto es 2 + 3?</div>
-    <div id="options" class="mt-4"></div>
-    <div id="result"></div>
-    <div id="reward">¡Muy bien! 🌟</div>
+  <div class="container text-center">
+    <h1 class="my-4 animated-text">¡Aprendamos los Números del 1 al 10!</h1>
+    <p class="lead">Haz clic en un número para ver las pelotas.</p>
+
+    <!-- Números -->
+    <div class="btn-container">
+      <div class="btn-group">
+        <div class="number-btn" onclick="generateBalls(1)">1</div>
+        <div class="number-btn" onclick="generateBalls(2)">2</div>
+        <div class="number-btn" onclick="generateBalls(3)">3</div>
+        <div class="number-btn" onclick="generateBalls(4)">4</div>
+        <div class="number-btn" onclick="generateBalls(5)">5</div>
+        <div class="number-btn" onclick="generateBalls(6)">6</div>
+        <div class="number-btn" onclick="generateBalls(7)">7</div>
+        <div class="number-btn" onclick="generateBalls(8)">8</div>
+        <div class="number-btn" onclick="generateBalls(9)">9</div>
+        <div class="number-btn" onclick="generateBalls(10)">10</div>
+      </div>
+    </div>
+
+    <!-- Contenedor para las pelotas dentro de un rectángulo -->
+    <div id="rectangle-container"></div>
+
+    <!-- Retroalimentación -->
+    <div id="feedback" class="feedback"></div>
   </div>
 
   <script>
-    function generateSumQuestion() {
-      const questionElement = document.getElementById('question');
-      const optionsContainer = document.getElementById('options');
-      const resultContainer = document.getElementById('result');
-      const reward = document.getElementById('reward');
+    function generateBalls(number) {
+      const rectangleContainer = document.getElementById('rectangle-container');
+      const feedback = document.getElementById('feedback');
+      const containerWidth = rectangleContainer.offsetWidth;
+      const containerHeight = rectangleContainer.offsetHeight;
 
-      // Reset containers
-      optionsContainer.innerHTML = '';
-      resultContainer.textContent = '';
-      reward.style.display = 'none';
+      // Limpia las pelotas y el feedback previo
+      rectangleContainer.innerHTML = '';
+      feedback.textContent = '';
 
-      // Generate random numbers for the sum
-      const num1 = Math.floor(Math.random() * 5) + 1; // Numbers between 1 and 5
-      const num2 = Math.floor(Math.random() * 5) + 1;
-      const correctAnswer = num1 + num2;
+      // Arreglo para almacenar las posiciones de las pelotas
+      const positions = [];
 
-      // Update the question
-      questionElement.textContent = `¿Cuánto es ${num1} + ${num2}?`;
+      // Generar pelotas
+      for (let i = 0; i < number; i++) {
+        let x, y, overlapping;
 
-      // Generate options (including the correct answer)
-      const options = new Set();
-      while (options.size < 4) {
-        const randomOption = Math.floor(Math.random() * 10) + 1; // Random options
-        options.add(randomOption);
-      }
-      options.add(correctAnswer);
+        // Buscar una posición que no se solape con otras pelotas
+        do {
+          overlapping = false;
+          x = Math.random() * (containerWidth - 40); // Genera una posición X dentro del rectángulo
+          y = Math.random() * (containerHeight - 40); // Genera una posición Y dentro del rectángulo
 
-      // Shuffle and display options
-      const shuffledOptions = Array.from(options).sort(() => Math.random() - 0.5);
-      shuffledOptions.forEach(option => {
-        const button = document.createElement('button');
-        button.className = 'option-btn';
-        button.textContent = option;
-
-        button.addEventListener('click', () => {
-          if (option === correctAnswer) {
-            resultContainer.textContent = '¡Correcto!';
-            reward.style.display = 'block';
-            setTimeout(() => generateSumQuestion(), 3000);
-          } else {
-            resultContainer.textContent = 'Inténtalo de nuevo.';
+          // Comprobar si la nueva pelota se solapa con alguna existente
+          for (const pos of positions) {
+            const distanceBetween = Math.sqrt(Math.pow(x - pos.x, 2) + Math.pow(y - pos.y, 2));
+            if (distanceBetween < 50) { // 50px es el tamaño de las pelotas + espacio adicional
+              overlapping = true;
+              break;
+            }
           }
-        });
+        } while (overlapping);
 
-        optionsContainer.appendChild(button);
-      });
+        // Guardamos la posición de la pelota
+        positions.push({ x, y });
+
+        // Crear y posicionar la pelota
+        const ball = document.createElement('div');
+        ball.className = 'ball';
+        ball.style.left = `${x}px`;
+        ball.style.top = `${y}px`;
+        rectangleContainer.appendChild(ball);
+      }
+
+      // Retroalimentación visual
+      feedback.textContent = `Haz clic en el número ${number}!`;
+      feedback.style.color = '#007bff';
     }
-
-    // Generate the first question on load
-    generateSumQuestion();
   </script>
+
+  <!-- Bootstrap JS (Opcional) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

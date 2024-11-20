@@ -21,7 +21,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
-    
+    /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); */
     border: none;
   }
 
@@ -94,6 +94,8 @@ body {
     justify-content: center;
     gap: 20px;
   }
+
+  
 
   .option-btn {
     padding: 15px 30px;

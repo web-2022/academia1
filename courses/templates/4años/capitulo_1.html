@@ -6,100 +6,84 @@
 
 <div class="container-fluid">
   <div class="row">
-    <!-- Menú para capítulos -->
+    <!-- Sidebar for chapters -->
     <div class="row p-3 d-flex justify-content-center">
+      
       <ul class="list-group list-group-horizontal d-flex flex-wrap">
         <li class="list-group-item flex-fill">
-          <h2 class="text-success">03 años: </h2>
+          <a href="{% url 'capitulo' capitulo_id=1 %}">Capítulo 1: Números y Contar</a>
         </li>
         <li class="list-group-item flex-fill">
-          <a href="{% url 'capitulo' capitulo_id=1 %}">Capítulo 1: Aprender los números</a>
+          <a href="{% url 'capitulo' capitulo_id=2 %}">Capítulo 2: Sumas y Restas</a>
         </li>
         <li class="list-group-item flex-fill">
-          <a href="{% url 'capitulo' capitulo_id=2 %}">Capítulo 2: Aprender a contar</a>
+          <a href="{% url 'capitulo' capitulo_id=3 %}">Capítulo 3: Multiplicaciones</a>
         </li>
         <li class="list-group-item flex-fill">
-          <a href="{% url 'capitulo' capitulo_id=3 %}">Capítulo 3: Comparar cantidades</a>
-        </li>
-        <li class="list-group-item flex-fill">
-          <a href="{% url 'capitulo' capitulo_id=4 %}">Capítulo 4: Identificar formas geométricas</a>
-        </li>
-        <li class="list-group-item flex-fill">
-          <a href="{% url 'capitulo' capitulo_id=5 %}">Capítulo 5: Aprender posicionamiento espacial</a>
-        </li>
-        <li class="list-group-item flex-fill">
-          <a href="{% url 'capitulo' capitulo_id=6 %}">Capítulo 6: Identificar Patrones</a>
-        </li>
-        <li class="list-group-item flex-fill">
-          <a href="{% url 'capitulo' capitulo_id=7 %}">Capítulo 7: Identificar Secuencias</a>
-        </li>
-        <li class="list-group-item flex-fill">
-          <a href="{% url 'capitulo' capitulo_id=8 %}">Capítulo 8: Comparar objetos por tamaño</a>
-        </li>
-        <li class="list-group-item flex-fill">
-          <a href="{% url 'capitulo' capitulo_id=9 %}">Capítulo 9: Comparar objetos por longitud</a>
+          <a href="{% url 'capitulo' capitulo_id=4 %}">Capítulo 4: División</a>
         </li>
       </ul>
     </div>
     <!-- Main content -->
     <div class="container">
-      <h2 class="text-primary">¡Cuenta las pelotas!</h2>
-      <p class="lead">Haz clic en el número correcto:</p>
+      <h2 class="text-primary">¡Aprendamos a contar!</h2>
+      <p class="lead">Haz clic en un botón para generar pelotas y elige cuántas ves.</p>
       <div class="btn-group" role="group">
-        <button id="generate-btn-5" class="btn btn-primary">Generar</button>
-
+        <button id="generate-btn-5" class="btn btn-primary">Generar (1-5)</button>
+        <button id="generate-btn-10" class="btn btn-success">Generar (1-10)</button>
+        <button id="generate-btn-15" class="btn btn-warning">Generar (1-15)</button>
       </div>
       <div id="feedback" class="feedback"></div>
       <div id="circle-container" class="mt-4"></div>
       <div id="options-container" class="mt-4"></div>
-
+      
     </div>
-
+  
     <script>
-
       // Manejo de generación de pelotas y opciones
       document.getElementById('generate-btn-5').addEventListener('click', () => generateBalls(5));
-
-
+      document.getElementById('generate-btn-10').addEventListener('click', () => generateBalls(10));
+      document.getElementById('generate-btn-15').addEventListener('click', () => generateBalls(15));
+  
       function generateBalls(maxBalls) {
         const circleContainer = document.getElementById('circle-container');
         const optionsContainer = document.getElementById('options-container');
         const feedback = document.getElementById('feedback');
-
+  
         // Limpia el contenido previo
         circleContainer.innerHTML = '';
         optionsContainer.innerHTML = '';
         feedback.textContent = '';
-
+  
         // Genera un número aleatorio de pelotas
         const numBalls = Math.floor(Math.random() * maxBalls) + 1;
-
+  
         // Crea las pelotas y las posiciona aleatoriamente dentro del círculo
         for (let i = 0; i < numBalls; i++) {
           const ball = document.createElement('div');
           ball.className = 'ball';
-
+  
           // Posición aleatoria dentro del círculo
           const angle = Math.random() * 2 * Math.PI;
           const radius = Math.random() * 40 + 20; // Ajustar para que no salgan fuera del círculo
           const x = 50 + radius * Math.cos(angle); // Posición X como porcentaje
           const y = 50 + radius * Math.sin(angle); // Posición Y como porcentaje
-
+  
           ball.style.position = 'absolute';
           ball.style.left = `calc(${x}% - 25px)`; // Ajuste para centrar (50px es el tamaño del balón)
           ball.style.top = `calc(${y}% - 25px)`;
-
+  
           circleContainer.appendChild(ball);
         }
-
+  
         // Genera opciones de respuesta
         const options = new Set();
         options.add(numBalls);
-
+  
         while (options.size < 4) {
           options.add(Math.floor(Math.random() * maxBalls) + 1);
         }
-
+  
         // Ordena y muestra las opciones
         Array.from(options).sort(() => Math.random() - 0.5).forEach(option => {
           const button = document.createElement('button');
@@ -119,8 +103,10 @@
         });
       }
     </script>
-
+  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </div>
 </div>
 {% endblock %}
+
+
