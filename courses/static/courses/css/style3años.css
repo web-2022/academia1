@@ -125,3 +125,198 @@ body {
     display: none;
     margin-top: 20px;
   }
+
+  /* Cap1. Contar números */
+  .number-btn {
+    font-size: 2.5rem;
+    width: 80px;
+    height: 80px;
+    margin: 15px;
+    border-radius: 50%;
+    background-color: #ff5722;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    line-height: 80px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 2px solid #fff;
+  }
+
+  .number-btn:hover {
+    background-color: #ff3d00;
+    transform: scale(1.1);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+  }
+
+  .number-btn:focus {
+    outline: none;
+  }
+
+  /* Animación y distribución de pelotas */
+  .ball {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #4caf50; /* Cambio de color a verde */
+    position: absolute;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), inset 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: ball-animation 1.5s ease-out forwards;
+    transform: translateZ(0); /* Asegura que se vea bien en 3D */
+  }
+
+  @keyframes ball-animation {
+    0% {
+      transform: scale(0) translate(0, 0);
+    }
+    100% {
+      transform: scale(1) translate(0, 0);
+    }
+  }
+
+  #rectangle-container {
+    position: relative;
+    width: 80%;
+    height: 300px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border: 1px solid #007bff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Feedback message */
+  .feedback {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #28a745;
+  }
+
+  .btn-container {
+    margin: 40px 0;
+  }
+
+  .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Animación de texto */
+  .animated-text {
+    animation: text-animation 2s ease-in-out;
+  }
+
+  @keyframes text-animation {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+   /* Capítulo 3: Comparar cantidades */
+
+   h1 {
+    font-size: 2.5rem;
+    color: #007bff;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+   .instructions {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #444;
+    margin-bottom: 30px;
+  }
+
+  .play-area {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    max-width: 900px;
+  }
+
+  .box {
+    width: 40%;
+    padding: 20px;
+    text-align: center;
+    border: 3px dashed #007bff;
+    border-radius: 10px;
+    background-color: #e6f7ff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .box h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .circle {
+    width: 50px;
+    height: 50px;
+    background-color: #ff6f61;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .circle.green {
+    background-color: #4caf50;
+  }
+
+  .btn-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .btn {
+    font-size: 1.25rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn:hover {
+    opacity: 0.9;
+  }
+
+  .feedback {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+  }
+
+  .btn-danger {
+    background-color: #ff5722;
+    color: white;
+    border: none;
+  }
+
+  .btn-success {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+  }

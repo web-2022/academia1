@@ -1,0 +1,171 @@
+{% extends 'courses/base_3años.html' %}
+
+{% block title %}Capítulo 1: Números y Contar{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+  <!-- Menú para capítulos -->
+  <div class="row p-3 d-flex justify-content-center">
+    <div class="col-12">
+      <!-- Botón del menú desplegable -->
+      <button class="btn btn-primary w-100 d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#capitulosMenu" aria-expanded="false" aria-controls="capitulosMenu">
+        Menú de capítulos
+      </button>
+  
+      <!-- Menú desplegable para dispositivos móviles -->
+      <div class="collapse d-md-none" id="capitulosMenu">
+        <ul class="list-group mt-2">
+          <li class="list-group-item">
+            <h2 class="text-success">03 años:</h2>
+          </li>
+          <li class="list-group-item border border-primary">
+            <a href="{% url 'capitulo' capitulo_id=1 %}">Capítulo 1: Aprender los números</a>
+          </li>
+          <li class="list-group-item border border-primary">
+            <a href="{% url 'capitulo' capitulo_id=2 %}">Capítulo 2: Aprender a contar</a>
+          </li>
+          <li class="list-group-item border border-primary">
+            <a href="{% url 'capitulo' capitulo_id=3 %}">Capítulo 3: Comparar cantidades</a>
+          </li>
+          <li class="list-group-item border border-primary">
+            <a href="{% url 'capitulo' capitulo_id=4 %}">Capítulo 4: Identificar formas geométricas</a>
+          </li>
+          <li class="list-group-item border border-primary">
+            <a href="{% url 'capitulo' capitulo_id=5 %}">Capítulo 5: Aprender posicionamiento espacial</a>
+          </li>
+          <li class="list-group-item border border-primary">
+            <a href="{% url 'capitulo' capitulo_id=6 %}">Capítulo 6: Identificar Patrones</a>
+          </li>
+          <li class="list-group-item border border-primary">
+            <a href="{% url 'capitulo' capitulo_id=7 %}">Capítulo 7: Identificar Secuencias</a>
+          </li>
+          <li class="list-group-item border border-primary">
+            <a href="{% url 'capitulo' capitulo_id=8 %}">Capítulo 8: Comparar objetos por tamaño</a>
+          </li>
+          <li class="list-group-item border border-primary">
+            <a href="{% url 'capitulo' capitulo_id=9 %}">Capítulo 9: Comparar objetos por longitud</a>
+          </li>
+          <li class="list-group-item border border-primary">
+            <a href="{% url 'capitulo' capitulo_id=10 %}">Capítulo 10: Sumar figuras geométricas</a>
+          </li>
+        </ul>
+      </div>
+  
+      <!-- Menú horizontal para pantallas grandes -->
+      <ul class="list-group list-group-horizontal d-none d-md-flex flex-wrap mt-3">
+        <li class="list-group-item flex-fill">
+          <h2 class="text-success">03 años:</h2>
+        </li>
+        <li class="list-group-item flex-fill border border-primary">
+          <a href="{% url 'capitulo' capitulo_id=1 %}">Capítulo 1: Aprender los números</a>
+        </li>
+        <li class="list-group-item flex-fill border border-primary">
+          <a href="{% url 'capitulo' capitulo_id=2 %}">Capítulo 2: Aprender a contar</a>
+        </li>
+        <li class="list-group-item flex-fill border border-primary">
+          <a href="{% url 'capitulo' capitulo_id=3 %}">Capítulo 3: Comparar cantidades</a>
+        </li>
+        <li class="list-group-item flex-fill border border-primary">
+          <a href="{% url 'capitulo' capitulo_id=4 %}">Capítulo 4: Identificar formas geométricas</a>
+        </li>
+        <li class="list-group-item flex-fill border border-primary">
+          <a href="{% url 'capitulo' capitulo_id=5 %}">Capítulo 5: Aprender posicionamiento espacial</a>
+        </li>
+        <li class="list-group-item flex-fill border border-primary">
+          <a href="{% url 'capitulo' capitulo_id=6 %}">Capítulo 6: Identificar Patrones</a>
+        </li>
+        <li class="list-group-item flex-fill border border-primary">
+          <a href="{% url 'capitulo' capitulo_id=7 %}">Capítulo 7: Identificar Secuencias</a>
+        </li>
+        <li class="list-group-item flex-fill border border-primary">
+          <a href="{% url 'capitulo' capitulo_id=8 %}">Capítulo 8: Comparar objetos por tamaño</a>
+        </li>
+        <li class="list-group-item flex-fill border border-primary">
+          <a href="{% url 'capitulo' capitulo_id=9 %}">Capítulo 9: Comparar objetos por longitud</a>
+        </li>
+        <li class="list-group-item flex-fill border border-primary">
+          <a href="{% url 'capitulo' capitulo_id=10 %}">Capítulo 10: Sumar figuras geométricas</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+<!-- Main content -->
+<div class="container text-center">
+    <h1>¡Sumemos Figuras!</h1>
+    <div class="question-container">
+      <div class="shapes-container" id="left-shapes"></div>
+      <div class="shapes-container" id="right-shapes"></div>
+      <p class="mt-3">¿Cuántas figuras hay en total?</p>
+    </div>
+    <div class="options-container" id="options"></div>
+    <div id="result"></div>
+    <div id="reward">¡Muy bien! 🎉</div>
+  </div>
+
+  <script>
+    function generateSumWithShapes() {
+      const leftShapesContainer = document.getElementById('left-shapes');
+      const rightShapesContainer = document.getElementById('right-shapes');
+      const optionsContainer = document.getElementById('options');
+      const resultContainer = document.getElementById('result');
+      const reward = document.getElementById('reward');
+
+      // Reset containers
+      leftShapesContainer.innerHTML = '';
+      rightShapesContainer.innerHTML = '';
+      optionsContainer.innerHTML = '';
+      resultContainer.textContent = '';
+      reward.style.display = 'none';
+
+      // Generate random numbers for the sum
+      const leftCount = Math.floor(Math.random() * 5) + 1; // Between 1 and 5
+      const rightCount = Math.floor(Math.random() * 5) + 1; // Between 1 and 5
+      const totalShapes = leftCount + rightCount;
+
+      // Function to create shapes
+      const createShapes = (count, shapeClass, container) => {
+        for (let i = 0; i < count; i++) {
+          const shape = document.createElement('div');
+          shape.className = `shape ${shapeClass}`;
+          container.appendChild(shape);
+        }
+      };
+
+      // Create shapes for the left and right sides
+      createShapes(leftCount, 'circle', leftShapesContainer);
+      createShapes(rightCount, 'square', rightShapesContainer);
+
+      // Generate options
+      const options = new Set();
+      while (options.size < 3) {
+        const randomOption = Math.floor(Math.random() * 10) + 1;
+        options.add(randomOption);
+      }
+      options.add(totalShapes);
+
+      // Shuffle and display options
+      Array.from(options).sort(() => Math.random() - 0.5).forEach(option => {
+        const button = document.createElement('button');
+        button.className = 'option-btn';
+        button.textContent = option;
+
+        button.addEventListener('click', () => {
+          if (option === totalShapes) {
+            resultContainer.textContent = '¡Correcto!';
+            reward.style.display = 'block';
+            setTimeout(() => generateSumWithShapes(), 3000);
+          } else {
+            resultContainer.textContent = 'Inténtalo de nuevo.';
+          }
+        });
+
+        optionsContainer.appendChild(button);
+      });
+    }
+
+    // Generate the first question on load
+    generateSumWithShapes();
+  </script>
+{% endblock %}

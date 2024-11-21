@@ -47,6 +47,9 @@
         <li class="list-group-item border border-primary">
           <a href="{% url 'capitulo' capitulo_id=9 %}">Capítulo 9: Comparar objetos por longitud</a>
         </li>
+        <li class="list-group-item border border-primary">
+          <a href="{% url 'capitulo' capitulo_id=10 %}">Capítulo 10: Sumar figuras geométricas</a>
+        </li>
       </ul>
     </div>
 
@@ -82,88 +85,92 @@
       <li class="list-group-item flex-fill border border-primary">
         <a href="{% url 'capitulo' capitulo_id=9 %}">Capítulo 9: Comparar objetos por longitud</a>
       </li>
+      <li class="list-group-item flex-fill border border-primary">
+        <a href="{% url 'capitulo' capitulo_id=10 %}">Capítulo 10: Sumar figuras geométricas</a>
+      </li>
     </ul>
   </div>
 </div>
 
 
 
-    <!-- Main content -->
-    <div class="container">
-      <h2 class="text-primary">¡Cuenta las pelotas!</h2>
-      <p class="lead">Haz clic en el número correcto:</p>
-      <div class="btn-group" role="group">
-        <button id="generate-btn-5" class="btn btn-primary">Generar</button>
-
+    <!-- Capítulo 1: Aprender los números -->
+    <div class="container text-center">
+      <h1 class="my-4 animated-text">¡Aprendamos los Números del 1 al 10!</h1>
+      <p class="lead">Haz clic en un número para ver las pelotas.</p>
+  
+      <!-- Números -->
+      <div class="btn-container">
+        <div class="btn-group">
+          <div class="number-btn" onclick="generateBalls(1)">1</div>
+          <div class="number-btn" onclick="generateBalls(2)">2</div>
+          <div class="number-btn" onclick="generateBalls(3)">3</div>
+          <div class="number-btn" onclick="generateBalls(4)">4</div>
+          <div class="number-btn" onclick="generateBalls(5)">5</div>
+          <div class="number-btn" onclick="generateBalls(6)">6</div>
+          <div class="number-btn" onclick="generateBalls(7)">7</div>
+          <div class="number-btn" onclick="generateBalls(8)">8</div>
+          <div class="number-btn" onclick="generateBalls(9)">9</div>
+          <div class="number-btn" onclick="generateBalls(10)">10</div>
+        </div>
       </div>
+  
+      <!-- Contenedor para las pelotas dentro de un rectángulo -->
+      <div id="rectangle-container"></div>
+  
+      <!-- Retroalimentación -->
       <div id="feedback" class="feedback"></div>
-      <div id="circle-container" class="mt-4"></div>
-      <div id="options-container" class="mt-4"></div>
-
     </div>
-
+  
     <script>
-
-      // Manejo de generación de pelotas y opciones
-      document.getElementById('generate-btn-5').addEventListener('click', () => generateBalls(5));
-
-
-      function generateBalls(maxBalls) {
-        const circleContainer = document.getElementById('circle-container');
-        const optionsContainer = document.getElementById('options-container');
+      function generateBalls(number) {
+        const rectangleContainer = document.getElementById('rectangle-container');
         const feedback = document.getElementById('feedback');
-
-        // Limpia el contenido previo
-        circleContainer.innerHTML = '';
-        optionsContainer.innerHTML = '';
+        const containerWidth = rectangleContainer.offsetWidth;
+        const containerHeight = rectangleContainer.offsetHeight;
+  
+        // Limpia las pelotas y el feedback previo
+        rectangleContainer.innerHTML = '';
         feedback.textContent = '';
-
-        // Genera un número aleatorio de pelotas
-        const numBalls = Math.floor(Math.random() * maxBalls) + 1;
-
-        // Crea las pelotas y las posiciona aleatoriamente dentro del círculo
-        for (let i = 0; i < numBalls; i++) {
+  
+        // Arreglo para almacenar las posiciones de las pelotas
+        const positions = [];
+  
+        // Generar pelotas
+        for (let i = 0; i < number; i++) {
+          let x, y, overlapping;
+  
+          // Buscar una posición que no se solape con otras pelotas
+          do {
+            overlapping = false;
+            x = Math.random() * (containerWidth - 40); // Genera una posición X dentro del rectángulo
+            y = Math.random() * (containerHeight - 40); // Genera una posición Y dentro del rectángulo
+  
+            // Comprobar si la nueva pelota se solapa con alguna existente
+            for (const pos of positions) {
+              const distanceBetween = Math.sqrt(Math.pow(x - pos.x, 2) + Math.pow(y - pos.y, 2));
+              if (distanceBetween < 50) { // 50px es el tamaño de las pelotas + espacio adicional
+                overlapping = true;
+                break;
+              }
+            }
+          } while (overlapping);
+  
+          // Guardamos la posición de la pelota
+          positions.push({ x, y });
+  
+          // Crear y posicionar la pelota
           const ball = document.createElement('div');
           ball.className = 'ball';
-
-          // Posición aleatoria dentro del círculo
-          const angle = Math.random() * 2 * Math.PI;
-          const radius = Math.random() * 40 + 20; // Ajustar para que no salgan fuera del círculo
-          const x = 50 + radius * Math.cos(angle); // Posición X como porcentaje
-          const y = 50 + radius * Math.sin(angle); // Posición Y como porcentaje
-
-          ball.style.position = 'absolute';
-          ball.style.left = `calc(${x}% - 25px)`; // Ajuste para centrar (50px es el tamaño del balón)
-          ball.style.top = `calc(${y}% - 25px)`;
-
-          circleContainer.appendChild(ball);
+          ball.style.left = `${x}px`;
+          ball.style.top = `${y}px`;
+          rectangleContainer.appendChild(ball);
         }
-
-        // Genera opciones de respuesta
-        const options = new Set();
-        options.add(numBalls);
-
-        while (options.size < 4) {
-          options.add(Math.floor(Math.random() * maxBalls) + 1);
-        }
-
-        // Ordena y muestra las opciones
-        Array.from(options).sort(() => Math.random() - 0.5).forEach(option => {
-          const button = document.createElement('button');
-          button.textContent = option;
-          button.className = 'btn btn-outline-primary option-btn';
-          button.addEventListener('click', () => {
-            if (option === numBalls) {
-              feedback.textContent = '¡Correcto!';
-              feedback.style.color = 'green';
-              setTimeout(() => generateBalls(maxBalls), 2000); // Genera nuevas pelotas después de 2 segundos
-            } else {
-              feedback.textContent = 'Intenta de nuevo.';
-              feedback.style.color = 'red';
-            }
-          });
-          optionsContainer.appendChild(button);
-        });
+  
+        // Retroalimentación visual
+        feedback.textContent = `HAY ${number} ${number === 1 ? 'PELOTA' : 'PELOTAS'}`;
+        feedback.style.color = '#007bff';
+        
       }
     </script>
 

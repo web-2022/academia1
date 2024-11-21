@@ -1,168 +1,209 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sumas con Figuras Geométricas</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <title>Posicionamiento Espacial</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(to bottom, #fff3e0, #e1f5fe);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
+      background-color: #f0f8ff;
       font-family: 'Arial', sans-serif;
+      text-align: center;
     }
 
     h1 {
-      color: #00796b;
+      color: #007bff;
       font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .question-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       margin: 20px 0;
     }
 
-    .shapes-container {
-      display: flex;
-      justify-content: center;
+    .instructions {
+      font-size: 1.5rem;
       margin-bottom: 20px;
+      color: #444;
     }
 
-    .shape {
-      width: 50px;
-      height: 50px;
-      margin: 5px;
-    }
-
-    .circle {
-      background-color: #ffab91;
-      border-radius: 50%;
-    }
-
-    .square {
-      background-color: #4fc3f7;
-    }
-
-    .options-container {
+    #playground {
+      position: relative;
+      width: 80%;
+      height: 300px;
+      margin: 0 auto;
+      border: 2px dashed #007bff;
+      background-color: #eaf4ff;
       display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 20px;
+      overflow: hidden;
     }
 
-    .option-btn {
-      padding: 15px 30px;
-      font-size: 1.5rem;
-      background: #4caf50;
-      color: white;
-      border: none;
-      border-radius: 15px;
-      transition: background 0.3s, transform 0.2s;
+    .target {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background-color: #4caf50;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .draggable {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background-color: #ff5722;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       cursor: pointer;
+      z-index: 2;
     }
 
-    .option-btn:hover {
-      background: #388e3c;
-      transform: scale(1.1);
-    }
-
-    #result {
-      margin-top: 20px;
+    .feedback {
       font-size: 1.5rem;
+      margin-top: 20px;
       font-weight: bold;
     }
 
-    #reward {
-      font-size: 2rem;
-      color: #ff9800;
-      display: none;
+    .btn-container {
       margin-top: 20px;
+    }
+
+    .btn {
+      font-size: 1.25rem;
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    /* Botón flotante de WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      font-size: 30px;
+      z-index: 1000;
+    }
+
+    .whatsapp-float:hover {
+      background-color: #128c7e;
     }
   </style>
 </head>
 <body>
-  <div class="container text-center">
-    <h1>¡Sumemos Figuras!</h1>
-    <div class="question-container">
-      <div class="shapes-container" id="left-shapes"></div>
-      <div class="shapes-container" id="right-shapes"></div>
-      <p class="mt-3">¿Cuántas figuras hay en total?</p>
-    </div>
-    <div class="options-container" id="options"></div>
-    <div id="result"></div>
-    <div id="reward">¡Muy bien! 🎉</div>
+  <h1>Aprende Posicionamiento Espacial</h1>
+  <p class="instructions">Mueve el círculo rojo hacia: <span id="target-position"></span></p>
+
+  <div id="playground">
+    <div id="target" class="target"></div>
+    <div id="draggable" class="draggable"></div>
   </div>
 
+  <p class="feedback" id="feedback"></p>
+
+  <div class="btn-container">
+    <button class="btn" onclick="generateNewChallenge()">Nuevo Reto</button>
+  </div>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/51950990891" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
   <script>
-    function generateSumWithShapes() {
-      const leftShapesContainer = document.getElementById('left-shapes');
-      const rightShapesContainer = document.getElementById('right-shapes');
-      const optionsContainer = document.getElementById('options');
-      const resultContainer = document.getElementById('result');
-      const reward = document.getElementById('reward');
+    const positions = {
+      arriba: { top: '10%', left: '50%' },
+      abajo: { top: '80%', left: '50%' },
+      izquierda: { top: '50%', left: '10%' },
+      derecha: { top: '50%', left: '80%' },
+    };
 
-      // Reset containers
-      leftShapesContainer.innerHTML = '';
-      rightShapesContainer.innerHTML = '';
-      optionsContainer.innerHTML = '';
-      resultContainer.textContent = '';
-      reward.style.display = 'none';
+    const draggable = document.getElementById('draggable');
+    const target = document.getElementById('target');
+    const feedback = document.getElementById('feedback');
+    const targetPositionText = document.getElementById('target-position');
+    let currentTargetPosition = '';
 
-      // Generate random numbers for the sum
-      const leftCount = Math.floor(Math.random() * 5) + 1; // Between 1 and 5
-      const rightCount = Math.floor(Math.random() * 5) + 1; // Between 1 and 5
-      const totalShapes = leftCount + rightCount;
+    function generateNewChallenge() {
+      const keys = Object.keys(positions);
+      currentTargetPosition = keys[Math.floor(Math.random() * keys.length)];
+      const targetPosition = positions[currentTargetPosition];
+      target.style.top = targetPosition.top;
+      target.style.left = targetPosition.left;
 
-      // Function to create shapes
-      const createShapes = (count, shapeClass, container) => {
-        for (let i = 0; i < count; i++) {
-          const shape = document.createElement('div');
-          shape.className = `shape ${shapeClass}`;
-          container.appendChild(shape);
-        }
-      };
-
-      // Create shapes for the left and right sides
-      createShapes(leftCount, 'circle', leftShapesContainer);
-      createShapes(rightCount, 'square', rightShapesContainer);
-
-      // Generate options
-      const options = new Set();
-      while (options.size < 3) {
-        const randomOption = Math.floor(Math.random() * 10) + 1;
-        options.add(randomOption);
-      }
-      options.add(totalShapes);
-
-      // Shuffle and display options
-      Array.from(options).sort(() => Math.random() - 0.5).forEach(option => {
-        const button = document.createElement('button');
-        button.className = 'option-btn';
-        button.textContent = option;
-
-        button.addEventListener('click', () => {
-          if (option === totalShapes) {
-            resultContainer.textContent = '¡Correcto!';
-            reward.style.display = 'block';
-            setTimeout(() => generateSumWithShapes(), 3000);
-          } else {
-            resultContainer.textContent = 'Inténtalo de nuevo.';
-          }
-        });
-
-        optionsContainer.appendChild(button);
-      });
+      targetPositionText.textContent = currentTargetPosition;
+      feedback.textContent = '';
+      resetDraggable();
     }
 
-    // Generate the first question on load
-    generateSumWithShapes();
+    function resetDraggable() {
+      draggable.style.top = '50%';
+      draggable.style.left = '50%';
+      draggable.style.transform = 'translate(-50%, -50%)';
+    }
+
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    draggable.addEventListener('mousedown', (event) => {
+      isDragging = true;
+      offsetX = event.offsetX;
+      offsetY = event.offsetY;
+    });
+
+    document.addEventListener('mousemove', (event) => {
+      if (isDragging) {
+        const rect = playground.getBoundingClientRect();
+        const x = event.clientX - rect.left - offsetX;
+        const y = event.clientY - rect.top - offsetY;
+
+        draggable.style.left = `${x}px`;
+        draggable.style.top = `${y}px`;
+      }
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (isDragging) {
+        isDragging = false;
+        checkPosition();
+      }
+    });
+
+    function checkPosition() {
+      const rect = target.getBoundingClientRect();
+      const draggableRect = draggable.getBoundingClientRect();
+
+      if (
+        draggableRect.left < rect.right &&
+        draggableRect.right > rect.left &&
+        draggableRect.top < rect.bottom &&
+        draggableRect.bottom > rect.top
+      ) {
+        feedback.textContent = '¡Correcto! 🎉';
+        feedback.style.color = '#4caf50';
+        setTimeout(generateNewChallenge, 3000); // Generar nuevo caso después de 3 segundos
+      } else {
+        feedback.textContent = '¡Intenta de nuevo! 😟';
+        feedback.style.color = '#ff5722';
+      }
+    }
+
+    generateNewChallenge();
   </script>
+
+  <!-- FontAwesome para el botón de WhatsApp -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
