@@ -47,7 +47,7 @@ class Purchase(models.Model):
     purchased_at = models.DateTimeField(auto_now_add=True)
 
 class Inicio(models.Model):
-    titulo = models.CharField(max_length=200, verbose_name='Nombre del Ciclo a publicar')
+    titulo = models.CharField(max_length=200, verbose_name='Nombre del Ciclo')
     subtitulo = models.CharField(max_length=200, blank=True)
     descripcion = models.TextField()
     imagen = models.ImageField(upload_to='courses/img/', blank=True)  # Guardará las imágenes en la carpeta 'courses/'
