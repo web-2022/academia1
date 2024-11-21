@@ -6,41 +6,88 @@
 
 <div class="container-fluid">
   <div class="row">
-    <!-- Menú para capítulos -->
-    <div class="row p-3 d-flex justify-content-center">
-      <ul class="list-group list-group-horizontal d-flex flex-wrap">
-        <li class="list-group-item flex-fill">
-          <h2 class="text-success">03 años: </h2>
+<!-- Menú para capítulos -->
+<div class="row p-3 d-flex justify-content-center">
+  <div class="col-12">
+    <!-- Botón del menú desplegable -->
+    <button class="btn btn-primary w-100 d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#capitulosMenu" aria-expanded="false" aria-controls="capitulosMenu">
+      Menú de capítulos
+    </button>
+
+    <!-- Menú desplegable para dispositivos móviles -->
+    <div class="collapse d-md-none" id="capitulosMenu">
+      <ul class="list-group mt-2">
+        <li class="list-group-item">
+          <h2 class="text-success">03 años:</h2>
         </li>
-        <li class="list-group-item flex-fill">
+        <li class="list-group-item border border-primary">
           <a href="{% url 'capitulo' capitulo_id=1 %}">Capítulo 1: Aprender los números</a>
         </li>
-        <li class="list-group-item flex-fill">
+        <li class="list-group-item border border-primary">
           <a href="{% url 'capitulo' capitulo_id=2 %}">Capítulo 2: Aprender a contar</a>
         </li>
-        <li class="list-group-item flex-fill">
+        <li class="list-group-item border border-primary">
           <a href="{% url 'capitulo' capitulo_id=3 %}">Capítulo 3: Comparar cantidades</a>
         </li>
-        <li class="list-group-item flex-fill">
+        <li class="list-group-item border border-primary">
           <a href="{% url 'capitulo' capitulo_id=4 %}">Capítulo 4: Identificar formas geométricas</a>
         </li>
-        <li class="list-group-item flex-fill">
+        <li class="list-group-item border border-primary">
           <a href="{% url 'capitulo' capitulo_id=5 %}">Capítulo 5: Aprender posicionamiento espacial</a>
         </li>
-        <li class="list-group-item flex-fill">
+        <li class="list-group-item border border-primary">
           <a href="{% url 'capitulo' capitulo_id=6 %}">Capítulo 6: Identificar Patrones</a>
         </li>
-        <li class="list-group-item flex-fill">
+        <li class="list-group-item border border-primary">
           <a href="{% url 'capitulo' capitulo_id=7 %}">Capítulo 7: Identificar Secuencias</a>
         </li>
-        <li class="list-group-item flex-fill">
+        <li class="list-group-item border border-primary">
           <a href="{% url 'capitulo' capitulo_id=8 %}">Capítulo 8: Comparar objetos por tamaño</a>
         </li>
-        <li class="list-group-item flex-fill">
+        <li class="list-group-item border border-primary">
           <a href="{% url 'capitulo' capitulo_id=9 %}">Capítulo 9: Comparar objetos por longitud</a>
         </li>
       </ul>
     </div>
+
+    <!-- Menú horizontal para pantallas grandes -->
+    <ul class="list-group list-group-horizontal d-none d-md-flex flex-wrap mt-3">
+      <li class="list-group-item flex-fill">
+        <h2 class="text-success">03 años:</h2>
+      </li>
+      <li class="list-group-item flex-fill border border-primary">
+        <a href="{% url 'capitulo' capitulo_id=1 %}">Capítulo 1: Aprender los números</a>
+      </li>
+      <li class="list-group-item flex-fill border border-primary">
+        <a href="{% url 'capitulo' capitulo_id=2 %}">Capítulo 2: Aprender a contar</a>
+      </li>
+      <li class="list-group-item flex-fill border border-primary">
+        <a href="{% url 'capitulo' capitulo_id=3 %}">Capítulo 3: Comparar cantidades</a>
+      </li>
+      <li class="list-group-item flex-fill border border-primary">
+        <a href="{% url 'capitulo' capitulo_id=4 %}">Capítulo 4: Identificar formas geométricas</a>
+      </li>
+      <li class="list-group-item flex-fill border border-primary">
+        <a href="{% url 'capitulo' capitulo_id=5 %}">Capítulo 5: Aprender posicionamiento espacial</a>
+      </li>
+      <li class="list-group-item flex-fill border border-primary">
+        <a href="{% url 'capitulo' capitulo_id=6 %}">Capítulo 6: Identificar Patrones</a>
+      </li>
+      <li class="list-group-item flex-fill border border-primary">
+        <a href="{% url 'capitulo' capitulo_id=7 %}">Capítulo 7: Identificar Secuencias</a>
+      </li>
+      <li class="list-group-item flex-fill border border-primary">
+        <a href="{% url 'capitulo' capitulo_id=8 %}">Capítulo 8: Comparar objetos por tamaño</a>
+      </li>
+      <li class="list-group-item flex-fill border border-primary">
+        <a href="{% url 'capitulo' capitulo_id=9 %}">Capítulo 9: Comparar objetos por longitud</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
     <!-- Main content -->
     <div class="container">
       <h2 class="text-primary">¡Cuenta las pelotas!</h2>
