@@ -1,0 +1,361 @@
+{% load static %}
+<!-- Carga el sistema de archivos estáticos de Django -->
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Estilo Bootstrap -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="shortcut icon" type="image/png" href="{% static 'courses/global/img/icon.jpeg' %}">
+
+        <!-- Estilos personalizados -->
+        <link rel="stylesheet" href="{% static 'courses/global/css/style2.css' %}">
+        <link rel="stylesheet"
+            href="{% static 'courses/3años/c1-aprender-los-numeros/css/c1-aprender-los-numeros.css' %}">
+
+
+
+
+        <!-- Tipo de letra -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+        <!-- CDN de Font Awesome para el ícono de WP-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+
+        <title>Menu lateral</title>
+    </head>
+
+    <body>
+        <!-- Menú de navegación CCG-->
+        <nav class="bg-warning d-flex align-items-center navbar navbar-expand-lg navbar-dark fondo fixed-top">
+            <div class="container-fluid d-flex justify-content-between">
+                <!-- Logo -->
+                <a class="navbar-brand d-flex align-items-center" href="{% url 'inicio' %}">
+                    <img src="{% static 'courses/global/img/logo.png' %}" alt="Logo" width="100" height="100"
+                        class="rounded-circle me-2">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Menú de navegación -->
+                <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'ciclos' %}">Ciclos</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contactanos' %}">Contáctanos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://academiagamarra.com/ead/">Plataforma Virtual</a>
+                        </li>
+                    </ul>
+
+                    <!-- Texto centrado -->
+                    <div class="text-center text-white mx-3">
+                        <div style="font-size: 1.2rem; font-weight: bold;">
+                            PRACTICA Y APRENDE
+                        </div>
+                        <ul class="navbar-nav special-menu2 mt-2">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'course_list' %}">Inicial</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Primaria</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Secundaria</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Pre</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Botones de sesión -->
+                    <ul class="navbar-nav">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item justify-content-center align-items-center p-3">
+                            <a class="nav-link btn btn-success text-white m-2 mt-4" href="{% url 'logout' %}">Cerrar
+                                Sesión</a>
+                            <p class="text-light" style="margin-top: 5px;">
+                                Hola, {{ user.username }}, bienvenido...
+                            </p>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary text-white m-2" href="{% url 'login' %}">Iniciar
+                                Sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-info text-white m-2" href="{% url 'register' %}">Registrarse</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- contenedor de titulo, subtitulo, ejercicio -->
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Menú para capítulos -->
+                <div class="row p-3 d-flex justify-content-center">
+                    <div class="col-12">
+                        <!-- Botón del menú desplegable -->
+                        <!-- Botón para mostrar/ocultar el menú -->
+                        <button id="sidebar-toggler" class="btn btn-primary">☰ Capítulos</button>
+
+
+                        <!-- Menú desplegable para dispositivos móviles -->
+                        <div class="collapse d-md-none" id="sidebar">
+                            <ul class="list-group mt-2">
+                                <li class="list-group-item">
+                                    <h2 class="text-success">03 años:</h2>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a
+                                        href="{% url 'capitulo' course_slug='tres' chapter_slug='c1-aprender-los-numeros'%}">Capítulo
+                                        1:
+                                        Aprender los números</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a
+                                        href="{% url 'capitulo' course_slug='tres' chapter_slug='c2-aprender-a-contar'%}">Capítulo
+                                        2: Aprender
+                                        a contar</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a
+                                        href="{% url 'capitulo' course_slug='tres' chapter_slug='c3-compara-cantidades'%}">Capítulo
+                                        3: Comparar
+                                        cantidades</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a
+                                        href="{% url 'capitulo' course_slug='tres' chapter_slug='c4-identificar-formas-geometricas'%}">Capítulo
+                                        4: Identificar formas geométricas</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a
+                                        href="{% url 'capitulo' course_slug='tres' chapter_slug='c5-aprenderposicionamiento-espacial'%}">Capítulo
+                                        5: Aprender posicionamiento espacial</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a
+                                        href="{% url 'capitulo' course_slug='tres' chapter_slug='c6-identificar-patrones'%}">Capítulo
+                                        6:
+                                        Identificar Patrones</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a
+                                        href="{% url 'capitulo' course_slug='tres' chapter_slug='C7-Identificar-secuencias'%}">Capítulo
+                                        7:
+                                        Identificar Secuencias</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a
+                                        href="{% url 'capitulo' course_slug='tres' chapter_slug='c8-comparar-objetos-por-tamano'%}">Capítulo
+                                        8:
+                                        Comparar objetos por tamaño</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a
+                                        href="{% url 'capitulo' course_slug='tres' chapter_slug='c9-comparar-objetos-por-longitud'%}">Capítulo
+                                        9: Comparar objetos por longitud</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a
+                                        href="{% url 'capitulo' course_slug='tres' chapter_slug='c10-sumar-figuras-geometricas'%}">Capítulo
+                                        10:
+                                        Sumar figuras geométricas</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Menú horizontal para pantallas grandes -->
+                        <ul class="list-group list-group-horizontal d-none d-md-flex flex-wrap mt-3">
+                            <li class="list-group-item flex-fill">
+                                <h2 class="text-success">03 años:</h2>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a href="{% url 'capitulo' course_slug='tres' chapter_slug='c1-aprender-los-numeros'%}">Capítulo
+                                    1: Aprender
+                                    los números</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a href="{% url 'capitulo' course_slug='tres' chapter_slug='c2-aprender-a-contar'%}">Capítulo
+                                    2: Aprender a
+                                    contar</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a href="{% url 'capitulo' course_slug='tres' chapter_slug='c3-compara-cantidades'%}">Capítulo
+                                    3: Comparar
+                                    cantidades</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a
+                                    href="{% url 'capitulo' course_slug='tres' chapter_slug='c4-identificar-formas-geometricas'%}">Capítulo
+                                    4: Identificar formas geométricas</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a
+                                    href="{% url 'capitulo' course_slug='tres' chapter_slug='c5-aprenderposicionamiento-espacial'%}">Capítulo
+                                    5: Aprender posicionamiento espacial</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a href="{% url 'capitulo' course_slug='tres' chapter_slug='c6-identificar-patrones'%}">Capítulo
+                                    6:
+                                    Identificar Patrones</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a
+                                    href="{% url 'capitulo' course_slug='tres' chapter_slug='C7-Identificar-secuencias'%}">Capítulo
+                                    7:
+                                    Identificar Secuencias</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a
+                                    href="{% url 'capitulo' course_slug='tres' chapter_slug='c8-comparar-objetos-por-tamano'%}">Capítulo
+                                    8:
+                                    Comparar objetos por tamaño</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a
+                                    href="{% url 'capitulo' course_slug='tres' chapter_slug='c9-comparar-objetos-por-longitud'%}">Capítulo
+                                    9:
+                                    Comparar objetos por longitud</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a
+                                    href="{% url 'capitulo' course_slug='tres' chapter_slug='c10-sumar-figuras-geometricas'%}">Capítulo
+                                    10:
+                                    Sumar figuras geométricas</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Capítulo 2: Aprender a contar-->
+                <div class="container">
+                    <h1 class="text-primary">¡Cuenta las pelotas!</h1>
+                    <h2 class="lead">Haz clic en el número correcto:</h2>
+                    <div class="btn-group" role="group">
+                        <button id="generate-btn-5" class="btn btn-primary">Generar</button>
+                    </div>
+                    <div id="feedback" class="feedback text-left"></div>
+                    <div id="circle-container" class="mt-4"></div>
+                    <div id="options-container" class="mt-4"></div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <!-- Bootstrap JS and dependencias -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{% static 'courses/js/app.js' %}"></script>
+
+        <!--Script para mostrar/ocultar el menú lateral -->
+        <script>
+            const sidebar = document.getElementById('sidebar');
+            const toggler = document.getElementById('sidebar-toggler');
+
+            toggler.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+            });
+        </script>
+
+        <!-- script del capitulo_1 -->
+
+        <script>
+
+
+            // Manejo de generación de pelotas y opciones
+            document.getElementById('generate-btn-5').addEventListener('click', () => generateBalls(5));
+
+
+            function generateBalls(maxBalls) {
+                const circleContainer = document.getElementById('circle-container');
+                const optionsContainer = document.getElementById('options-container');
+                const feedback = document.getElementById('feedback');
+
+                // Limpia el contenido previo
+                circleContainer.innerHTML = '';
+                optionsContainer.innerHTML = '';
+                feedback.textContent = '';
+
+                // Genera un número aleatorio de pelotas
+                const numBalls = Math.floor(Math.random() * maxBalls) + 1;
+
+                // Crea las pelotas y las posiciona aleatoriamente dentro del círculo
+                for (let i = 0; i < numBalls; i++) {
+                    const ball = document.createElement('div');
+                    ball.className = 'ball';
+
+                    // Posición aleatoria dentro del círculo
+                    const angle = Math.random() * 2 * Math.PI;
+                    const radius = Math.random() * 40 + 20; // Ajustar para que no salgan fuera del círculo
+                    const x = 50 + radius * Math.cos(angle); // Posición X como porcentaje
+                    const y = 50 + radius * Math.sin(angle); // Posición Y como porcentaje
+
+                    ball.style.position = 'absolute';
+                    ball.style.left = `calc(${x}% - 25px)`; // Ajuste para centrar (50px es el tamaño del balón)
+                    ball.style.top = `calc(${y}% - 25px)`;
+
+                    circleContainer.appendChild(ball);
+                }
+
+                // Genera opciones de respuesta
+                const options = new Set();
+                options.add(numBalls);
+
+                while (options.size < 4) {
+                    options.add(Math.floor(Math.random() * maxBalls) + 1);
+                }
+
+                // Ordena y muestra las opciones
+                Array.from(options).sort(() => Math.random() - 0.5).forEach(option => {
+                    const button = document.createElement('button');
+                    button.textContent = option;
+                    button.className = 'btn btn-outline-primary option-btn';
+                    button.addEventListener('click', () => {
+                        if (option === numBalls) {
+                            feedback.textContent = '¡Correcto!';
+                            feedback.style.color = 'green';
+                            setTimeout(() => generateBalls(maxBalls), 2000); // Genera nuevas pelotas después de 2 segundos
+                        } else {
+                            feedback.textContent = 'Intenta de nuevo.';
+                            feedback.style.color = 'red';
+                        }
+                    });
+                    optionsContainer.appendChild(button);
+                });
+            }
+
+
+        </script>
+
+
+
+
+    </body>
+
+</html>

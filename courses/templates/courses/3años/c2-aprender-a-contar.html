@@ -1,0 +1,47 @@
+{% extends 'courses/global/base_3años.html' %}
+{% load static %}
+
+{% block title %}Capítulo 2: Aprender a contar{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'courses/3años/c2-aprender-a-contar/css/c2-aprender-a-contar.css' %}">
+{% endblock %}
+
+<!-- Ejercicio -->
+{% block content %}
+<!-- Capítulo 2: Aprender a contar-->
+<div class="container">
+  <h1 class="text-primary">¡Contemos Juntos!</h1>
+  <h2 class="lead">Haz clic en un número</h2>
+  <!-- Números -->
+  <div class="btn-container">
+    <div class="btn-group">
+      <div class="number-btn" onclick="generateBalls(1)">1</div>
+      <div class="number-btn" onclick="generateBalls(2)">2</div>
+      <div class="number-btn" onclick="generateBalls(3)">3</div>
+      <div class="number-btn" onclick="generateBalls(4)">4</div>
+      <div class="number-btn" onclick="generateBalls(5)">5</div>
+      <div class="number-btn" onclick="generateBalls(6)">6</div>
+      <div class="number-btn" onclick="generateBalls(7)">7</div>
+      <div class="number-btn" onclick="generateBalls(8)">8</div>
+      <div class="number-btn" onclick="generateBalls(9)">9</div>
+      <div class="number-btn" onclick="generateBalls(10)">10</div>
+  </div>
+
+  </div>
+
+  <!-- Contenedor para las pelotas dentro de un rectángulo -->
+  <div id="rectangle-container"></div>
+   <!-- Retroalimentación -->
+  <div id="feedback" class="feedback text-left"></div>
+
+  <!-- <div id="circle-container" class="mt-4"></div> -->
+  <!-- <div id="options-container" class="mt-4"></div> -->
+  <!-- <audio id="audio-player"></audio> -->
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'courses/3años/c2-aprender-a-contar/js/c2-aprender-a-contar.js' %}"></script>
+{% endblock %}

@@ -24,14 +24,10 @@ from courses import views as course_views  # Para registrar la vista de register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('courses.urls')),    
+    path('login/', auth_views.LoginView.as_view(), name='login'),  # URL para login
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),  # URL para logout
     path('register/', course_views.register, name='register'),  # URL para registro
-    
-# URLs de autenticación (usando las vistas genéricas de Django)
-    path('login/', auth_views.LoginView.as_view(), name='login'),  # URL para la vista de login
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),  # URL para la vista de logout
-    
-
+    path('', include('courses.urls')),  # Incluye las URLs de la app courses al final
 ]
 
 if settings.DEBUG:

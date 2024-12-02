@@ -1,0 +1,159 @@
+/* Resetear estilos básicos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+  .container {
+    margin-top: 5px;
+    text-align: center;
+  }
+
+  #circle-container {
+    width: 60%;
+    height: 20vh;
+    background-color: transparent;
+    border-radius: 50%;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); */
+    border: none;
+  }
+
+  .ball {
+    
+    
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffcccc, #ff6666);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: bounce 1.5s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .option-btn {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+  }
+
+  .feedback {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    height: 16px;
+  }
+
+
+  /* Cap1. Contar números */
+  .number-btn {
+    font-size: 2.5rem;
+    width: 80px;
+    height: 80px;
+    margin: 15px;
+    border-radius: 50%;
+    background-color: #ff5722;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    line-height: 80px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 2px solid #fff;
+  }
+
+  .number-btn:hover {
+    background-color: #ff3d00;
+    transform: scale(1.1);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+  }
+
+  .number-btn:focus {
+    outline: none;
+  }
+
+  /* Animación y distribución de pelotas */
+  .ball {
+    width: 4vh;
+    height: 4vh;
+   
+    border-radius: 50%;
+    background-color: #4caf50; /* Cambio de color a verde */
+    position: absolute;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), inset 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: ball-animation 1.5s ease-out forwards;
+    transform: translateZ(0); /* Asegura que se vea bien en 3D */
+  }
+
+  @keyframes ball-animation {
+    0% {
+      transform: scale(0) translate(0, 0);
+    }
+    100% {
+      transform: scale(1) translate(0, 0);
+    }
+  }
+
+  #rectangle-container {
+    position: relative;
+    width: 80%;
+    height: 300px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border: 1px solid #007bff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Feedback message */
+  .feedback {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #28a745;
+  }
+
+  .btn-container {
+    margin: 40px 0;
+  }
+
+  .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Animación de texto */
+  .animated-text {
+    animation: text-animation 2s ease-in-out;
+  }
+
+  @keyframes text-animation {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+   

@@ -1,0 +1,43 @@
+{% extends 'courses/global/base.html' %}
+
+{% block title %}{{ course.title }}{% endblock %}
+
+
+{% block content %}
+<!-- Mostrando Cursos-->
+<h1>Matemáticas para {{ course.title }}</h1>
+
+<!-- Capítulos gratuitos (siempre visibles) -->
+<h2 class="text-primary">Capítulos del curso:</h2>
+<ul>
+  {% for chapter in free_chapters %}
+  <li>
+    <h3>{{ chapter.title }}</h3>
+    <p>{{ chapter.content }}</p>
+  </li>
+  {% endfor %}
+</ul>
+
+<!-- Capítulos bloqueados (solo visibles si el curso no está comprado) -->
+{% if not has_purchased %}
+
+<ul>
+  {% for chapter in locked_chapters %}
+  <li>
+    <h3>
+      {{ chapter.title }}
+    </h3>
+
+    <h4>
+      - Este capítulo está bloqueado.
+      <a href="{% url 'register' %}">Regístrate</a> para continuar o
+      <a href="{% url 'login' %}">Inicia sesión</a> para continuar.
+
+
+    </h4>
+
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

@@ -6,10 +6,8 @@ urlpatterns = [
     path('', views.inicio, name='inicio'),
     path('cursos/', views.course_list, name='course_list'),
     path('ciclos/', views.ciclos, name='ciclos'),
-    path('contactanos/', views.contactanos, name='contactanos'),
-    path('<int:course_id>/', views.course_detail, name='course_detail'),
-    path('capitulo/<int:capitulo_id>/', views.capitulo, name='capitulo'),
-    
-    
-    
+    path('contactanos/', views.contactanos, name='contactanos'), 
+    path('<slug:course_slug>/capitulo/<slug:chapter_slug>/', views.capitulo, name='capitulo'),
+    path('<slug:slug>/', views.course_detail, name='course_detail'),
+
 ]

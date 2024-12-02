@@ -1,0 +1,63 @@
+{% extends 'courses/global/base.html' %}
+
+{% block title %}Cursos Disponibles{% endblock %}
+
+
+{% block content %}
+<!-- Contenido de la página -->
+<!-- Contenido de la página -->
+<!-- Contenido de la página -->
+<!-- Contenido de la página -->
+<div class="container mt-1">
+    <h1 class="text-primary">Cursos</h1>
+
+    <div class="container" style="padding-left: 0; padding-right: 0;">
+        <div class="row">
+            {% for course in courses %}
+            <div class="col-12 col-md-4 col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="text-primary">{{ course.title }}</h2>
+                        <!-- <h2><a href="{% url 'course_detail' course.id %}">{{ course.title }}</a></h2> -->
+                        <p>{{ course.description }}</p>
+                        <img src="{{ course.imagen.url }}" alt="Imagen del Curso" class="img-fluid rounded mb-3">
+
+                        <!-- Aquí generamos enlaces a los capítulos de ese curso -->
+                        <h4>Capítulos:</h4>
+                        
+                            <ul class="list-unstyled text-start ps-0">
+                                {% for chapter in course.chapters.all %}
+                                {% if forloop.counter <= 2 %} <!-- Los primeros dos capítulos están accesibles -->
+                                    <li>
+                                        <a href="{% url 'capitulo' course_slug=chapter.course.slug chapter_slug=chapter.slug %}">{{ chapter.title }}</a>
+                                    </li>
+                                    {% else %}
+                                    <!-- Capítulos bloqueados si el usuario no está registrado -->
+                                    {% if user.is_authenticated %}
+                                    <li>
+                                        <a href="{% url 'capitulo' course_slug=chapter.course.slug chapter_slug=chapter.slug %}">{{ chapter.title }}</a>
+                                    </li>
+                                    {% else %}
+                                    <li>
+                                        {{ chapter.title }} - <span class="text-danger">Capítulo bloqueado</span>
+                                        <a href="{% url 'register' %}">Regístrate</a> o
+                                        <a href="{% url 'login' %}">Inicia sesión</a> para acceder.
+                                    </li>
+                                    {% endif %}
+                                    {% endif %}
+                                    {% endfor %}
+                            </ul>
+
+                        
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

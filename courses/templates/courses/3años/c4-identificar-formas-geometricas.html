@@ -1,0 +1,366 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Estilo Bootstrap -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="shortcut icon" type="image/png" href="{% static 'courses/img/icon.jpeg' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Estilos personalizados -->
+        <link rel="stylesheet" href="{% static 'courses/css/style2.css' %}">
+
+
+        <!-- Tipo de letra -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+        <!-- CDN de Font Awesome para el ícono de WP-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+        <title>Aprender a Comparar Cantidades</title>
+
+        <style>
+            body {
+                background-color: #f0f8ff;
+                font-family: 'Arial', sans-serif;
+                text-align: center;
+            }
+
+            h1 {
+                color: #007bff;
+                font-size: 2.5rem;
+                margin: 20px 0;
+            }
+
+            .instructions {
+                font-size: 1.5rem;
+                margin-bottom: 30px;
+                color: #444;
+            }
+
+            .shapes-container {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .shape {
+                width: 100px;
+                height: 100px;
+                display: inline-block;
+                cursor: pointer;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                transition: transform 0.3s;
+            }
+
+            .shape:hover {
+                transform: scale(1.1);
+            }
+
+            .circle {
+                background-color: #ff6f61;
+                border-radius: 50%;
+            }
+
+            .square {
+                background-color: #4caf50;
+            }
+
+            .triangle {
+                width: 0;
+                height: 0;
+                border-left: 50px solid transparent;
+                border-right: 50px solid transparent;
+                border-bottom: 100px solid #007bff;
+            }
+
+            .rectangle {
+                background-color: #ffeb3b;
+                width: 120px;
+                height: 80px;
+            }
+
+            .feedback {
+                font-size: 1.5rem;
+                margin-top: 20px;
+                font-weight: bold;
+            }
+
+            .btn-container {
+                margin-top: 30px;
+            }
+
+            .btn {
+                font-size: 1.25rem;
+                padding: 10px 20px;
+                border-radius: 8px;
+                color: white;
+                background-color: #007bff;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+
+            /* Botón flotante de WhatsApp */
+            .whatsapp-float {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: #25d366;
+                color: white;
+                padding: 15px;
+                border-radius: 50%;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                font-size: 30px;
+                z-index: 1000;
+            }
+
+            .whatsapp-float:hover {
+                background-color: #128c7e;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Menú de navegación CCG-->
+        <!-- fixed-top -->
+        <nav class="bg-warning d-flex align-items-center navbar navbar-expand-lg navbar-dark fondo fixed-top">
+            <div class="container-fluid d-flex justify-content-between">
+                <!-- Logo -->
+                <a class="navbar-brand d-flex align-items-center" href="{% url 'inicio' %}">
+                    <img src="{% static 'courses/img/logo.png' %}" alt="Logo" width="100" height="100"
+                        class="rounded-circle me-2">
+
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Menú de navegación -->
+                <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'ciclos' %}">Ciclos</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contactanos' %}">Contáctanos</a>
+                        </li>
+                    </ul>
+
+                    <!-- Texto centrado -->
+                    <div class="text-center text-white mx-3">
+                        <div style="font-size: 1.2rem; font-weight: bold;">
+                            PRACTICA Y APRENDE
+                        </div>
+                        <ul class="navbar-nav special-menu2 mt-2">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'course_list' %}">Inicial</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Primaria</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Secundaria</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Pre</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Botones de sesión -->
+                    <ul class="navbar-nav">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item justify-content-center align-items-center p-3">
+                            <a class="nav-link btn btn-success text-white m-2 mt-4" href="{% url 'logout' %}">Cerrar
+                                Sesión</a>
+                            <p class="text-light" style="margin-top: 5px;">
+                                Hola, {{ user.username }}, bienvenido...
+                            </p>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary text-white m-2" href="{% url 'login' %}">Iniciar
+                                Sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-info text-white m-2" href="{% url 'register' %}">Registrarse</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Menú para capítulos -->
+                <div class="row p-3 d-flex justify-content-center">
+                    <div class="col-12">
+                        <!-- Botón del menú desplegable -->
+                        <button class="btn btn-primary w-100 d-md-none" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#capitulosMenu" aria-expanded="false" aria-controls="capitulosMenu">
+                            Menú de capítulos
+                        </button>
+
+                        <!-- Menú desplegable para dispositivos móviles -->
+                        <div class="collapse d-md-none" id="capitulosMenu">
+                            <ul class="list-group mt-2">
+                                <li class="list-group-item">
+                                    <h2 class="text-success">03 años:</h2>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a href="{% url 'capitulo' capitulo_id=1 %}">Capítulo 1: Aprender los números</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a href="{% url 'capitulo' capitulo_id=2 %}">Capítulo 2: Aprender a contar</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a href="{% url 'capitulo' capitulo_id=3 %}">Capítulo 3: Comparar cantidades</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a href="{% url 'capitulo' capitulo_id=4 %}">Capítulo 4: Identificar formas
+                                        geométricas</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a href="{% url 'capitulo' capitulo_id=5 %}">Capítulo 5: Aprender posicionamiento
+                                        espacial</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a href="{% url 'capitulo' capitulo_id=6 %}">Capítulo 6: Identificar Patrones</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a href="{% url 'capitulo' capitulo_id=7 %}">Capítulo 7: Identificar Secuencias</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a href="{% url 'capitulo' capitulo_id=8 %}">Capítulo 8: Comparar objetos por
+                                        tamaño</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a href="{% url 'capitulo' capitulo_id=9 %}">Capítulo 9: Comparar objetos por
+                                        longitud</a>
+                                </li>
+                                <li class="list-group-item border border-primary">
+                                    <a href="{% url 'capitulo' capitulo_id=10 %}">Capítulo 10: Sumar figuras
+                                        geométricas</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Menú horizontal para pantallas grandes -->
+                        <ul class="list-group list-group-horizontal d-none d-md-flex flex-wrap mt-3">
+                            <li class="list-group-item flex-fill">
+                                <h2 class="text-success">03 años:</h2>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a href="{% url 'capitulo' capitulo_id=1 %}">Capítulo 1: Aprender los números</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a href="{% url 'capitulo' capitulo_id=2 %}">Capítulo 2: Aprender a contar</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a href="{% url 'capitulo' capitulo_id=3 %}">Capítulo 3: Comparar cantidades</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a href="{% url 'capitulo' capitulo_id=4 %}">Capítulo 4: Identificar formas
+                                    geométricas</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a href="{% url 'capitulo' capitulo_id=5 %}">Capítulo 5: Aprender posicionamiento
+                                    espacial</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a href="{% url 'capitulo' capitulo_id=6 %}">Capítulo 6: Identificar Patrones</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a href="{% url 'capitulo' capitulo_id=7 %}">Capítulo 7: Identificar Secuencias</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a href="{% url 'capitulo' capitulo_id=8 %}">Capítulo 8: Comparar objetos por tamaño</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a href="{% url 'capitulo' capitulo_id=9 %}">Capítulo 9: Comparar objetos por
+                                    longitud</a>
+                            </li>
+                            <li class="list-group-item flex-fill border border-primary">
+                                <a href="{% url 'capitulo' capitulo_id=10 %}">Capítulo 10: Sumar figuras geométricas</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Capítulo 4: Identificar formas-->
+
+                <h1>Identifica las Formas</h1>
+                <p class="instructions" id="instructions">Haz clic en el: <span class="text-primary" id="target-shape"></span></p>
+
+                <div class="shapes-container">
+                    <div class="shape circle" onclick="checkAnswer('círculo')"></div>
+                    <div class="shape square" onclick="checkAnswer('cuadrado')"></div>
+                    <div class="shape triangle" onclick="checkAnswer('triángulo')"></div>
+                    <div class="shape rectangle" onclick="checkAnswer('rectángulo')"></div>
+                </div>
+
+                <p class="feedback" id="feedback"></p>
+
+                <div class="btn-container">
+                    <button class="btn" onclick="generateNewChallenge()">Nuevo Reto</button>
+                </div>
+
+                <!-- Botón flotante de WhatsApp -->
+         
+
+                <script>
+                    const shapes = ['círculo', 'cuadrado', 'triángulo', 'rectángulo'];
+
+                    function generateNewChallenge() {
+                        const targetShape = shapes[Math.floor(Math.random() * shapes.length)];
+                        document.getElementById('target-shape').textContent = targetShape;
+                        document.getElementById('feedback').textContent = '';
+                    }
+
+                    function checkAnswer(selectedShape) {
+                        const targetShape = document.getElementById('target-shape').textContent;
+                        const feedback = document.getElementById('feedback');
+
+                        if (selectedShape === targetShape) {
+                            feedback.textContent = '¡Correcto! 🎉';
+                            feedback.style.color = '#4caf50';
+                            setTimeout(generateNewChallenge, 3000); // Genera un nuevo reto después de 3 segundos
+                        } else {
+                            feedback.textContent = '¡Intenta de nuevo! 😟';
+                            feedback.style.color = '#ff5722';
+                        }
+                    }
+
+                    // Generar el primer reto al cargar la página
+                    generateNewChallenge();
+                </script>
+
+                <!-- FontAwesome para el botón de WhatsApp -->
+                <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    </body>
+
+</html>

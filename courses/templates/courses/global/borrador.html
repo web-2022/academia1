@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio con Menús Responsivos</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1.6;
+            overflow-x: hidden; /* Evitar scroll horizontal */
+        }
+
+        /* Menú de navegación principal */
+        header {
+            background: #0077b6;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: row;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1rem;
+        }
+
+        /* Estilos del menú lateral para móviles */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background: #023e8a;
+            overflow-y: auto;
+            padding-top: 2rem;
+            z-index: 1000;
+            transform: translateX(-100%); /* Fuera de la pantalla por defecto */
+            transition: transform 0.3s ease-out; /* Animación suave */
+        }
+
+        .side-menu.active {
+            transform: translateX(0); /* Se desplaza hacia dentro */
+        }
+
+        .side-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .side-menu ul li {
+            margin: 0;
+        }
+
+        .side-menu ul li a {
+            display: block;
+            padding: 1rem;
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid #00b4d8;
+        }
+
+        .side-menu ul li a:hover {
+            background: #0077b6;
+        }
+
+        /* Menú de capítulos */
+        .chapters-container {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .chapters {
+            background: #00b4d8;
+            padding: 0.5rem 2rem;
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+        }
+
+        .chapters a {
+            text-decoration: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            background: #023e8a;
+            border-radius: 5px;
+            white-space: nowrap;
+        }
+
+        .chapters a:hover {
+            background: #0077b6;
+        }
+
+        .chapters-toggle {
+            display: none;
+            background: #0077b6;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: left;
+        }
+
+        .chapters-dropdown {
+            display: none;
+            flex-direction: column;
+        }
+
+        .chapters-dropdown.active {
+            display: flex;
+        }
+
+        /* Contenido principal */
+        main {
+            padding: 2rem;
+            background: #f1f1f1;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        /* Espacio para el ejercicio */
+        .exercise {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+            height: 200px; /* Altura fija */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Contenedor de las opciones */
+        .options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 10vh; /* 10% de la altura de la pantalla */
+        }
+
+        /* Opciones individuales */
+        .option {
+            background: #90e0ef;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 150px; /* Ancho fijo */
+            height: 90%; /* Altura relativa al contenedor padre (.options) */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .option:hover {
+            background: #00b4d8;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                justify-content: space-between;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .chapters {
+                display: none;
+            }
+
+            .chapters-toggle {
+                display: block;
+            }
+
+            h1, h2 {
+                text-align: center;
+            }
+
+            .exercise {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú de navegación -->
+    <header>
+        <h1>Ejercicios Interactivos</h1>
+        <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+        <nav class="side-menu">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Menú de capítulos -->
+    <div class="chapters-container">
+        <button class="chapters-toggle" onclick="toggleChapters()">Capítulos ☰</button>
+        <div class="chapters chapters-dropdown">
+            <a href="#capitulo1">Capítulo 1</a>
+            <a href="#capitulo2">Capítulo 2</a>
+            <a href="#capitulo3">Capítulo 3</a>
+            <a href="#capitulo4">Capítulo 4</a>
+            <a href="#capitulo5">Capítulo 5</a>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <main>
+        <h1>Título del Ejercicio</h1>
+        <h2>Subtítulo Explicativo</h2>
+
+        <!-- Espacio para el ejercicio -->
+        <div class="exercise">
+            <p>Aquí se presentará el ejercicio a desarrollar.</p>
+        </div>
+
+        <!-- Opciones de respuesta -->
+        <div class="options">
+            <div class="option">A. Madrid</div>
+            <div class="option">B. París</div>
+            <div class="option">C. Roma</div>
+            <div class="option">D. Berlín</div>
+        </div>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.side-menu');
+            menu.classList.toggle('active');
+        }
+
+        function toggleChapters() {
+            const chapters = document.querySelector('.chapters-dropdown');
+            chapters.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

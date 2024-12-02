@@ -1,0 +1,28 @@
+{% extends 'courses/global/base_3años.html' %}
+{% load static %}
+
+{% block title %}Capítulo 1: Números y Contar{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'courses/3años/c1-aprender-los-numeros/css/c1-aprender-los-numeros.css' %}">
+{% endblock %}
+
+<!-- Ejercicio -->
+{% block content %}
+<!-- Capítulo 1: Aprender a contar-->
+<div class="container">
+  <h1 class="text-primary">¡Cuenta las pelotas!</h1>
+  <h2 class="lead">Haz clic en el número correcto:</h2>
+  <div class="btn-group" role="group">
+    <button id="generate-btn-5" class="btn btn-primary">Generar</button>
+  </div>
+  <div id="feedback" class="feedback text-left"></div>
+  <div id="circle-container" class="mt-4"></div>
+  <div id="options-container" class="mt-4"></div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'courses/3años/c1-aprender-los-numeros/js/c1-aprender-los-numeros.js' %}"></script>
+{% endblock %}

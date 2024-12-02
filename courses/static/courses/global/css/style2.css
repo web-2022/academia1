@@ -1,0 +1,403 @@
+/* Resetear estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.fondo {
+    background: linear-gradient(to top, #1C7CE0, #150051);
+    /* Azul degradado */
+
+}
+
+.list-group-item {
+    padding: 1px;
+    font-size: 14px;
+}
+
+
+.special-menu .nav-item a:hover {
+    color: #ffdd57;
+    /* Color diferente al pasar el mouse */
+    text-decoration: underline;
+    /* Subrayado al pasar el mouse */
+}
+
+.special-menu {
+    font-size: 1.5rem;
+    /* Tamaño de fuente más grande */
+    font-weight: bold;
+    /* Negrita */
+    color: #ffc107;
+    /* Color amarillo (Bootstrap warning color) */
+    text-transform: uppercase;
+    /*Texto en mayúsculas */
+}
+
+/* Estilos de la pagina inicio */
+body {
+    background-color: #f1f2f6;
+    /* Fondo claro */
+    color: #333;
+}
+
+
+
+/* Hero section */
+.hero {
+    background-color: #3498db;
+    height: 2vh;
+
+
+
+}
+
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+
+    font-weight: bold;
+    word-wrap: break-word;
+    /* Permitir que el texto se divida si es necesario */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+
+
+}
+
+
+
+.cta-button {
+    background-color: #ff6f61;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #e55b50;
+}
+
+/* Sección de cursos */
+.card {
+    border: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    color: #3498db;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.card-text {
+    font-size: 1rem;
+}
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 40px 0;
+}
+
+footer a {
+    color: #ecf0f1;
+}
+
+
+/* Ajustes generales para el contenedor typing-container */
+.typing-container {
+    max-width: 100%;
+    /* Limita el ancho al 100% del contenedor */
+    font-weight: bold;
+    background: linear-gradient(to right, #007bff, #00c6ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 10px;
+    border-right: 3px solid #007bff;
+    /* Efecto de cursor */
+    overflow: hidden;
+    /* Evita el desbordamiento */
+    animation: typing 4s steps(40, end) forwards, blink-cursor 0.7s steps(1) 4s forwards;
+}
+
+
+.whatsapp-float {
+    position: fixed;
+    /* Mantenerlo fijo en la pantalla */
+    bottom: 20px;
+    /* Distancia desde la parte inferior de la pantalla */
+    right: 20px;
+    /* Distancia desde el lado derecho de la pantalla */
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    /* Hace que el icono sea circular */
+    padding: 15px;
+    font-size: 24px;
+    /* Tamaño del icono */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    /* Sombra */
+    text-decoration: none;
+    z-index: 1000;
+    /* Asegura que esté sobre otros elementos */
+}
+
+/* Efecto al pasar el cursor */
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    /* Cambia a un tono más oscuro de verde al pasar el cursor */
+}
+
+.ajustar-imagen {
+
+    height: 300px;
+    /* Altura fija para todas las imágenes */
+    object-fit: cover;
+    /* Cubre el área de la imagen manteniendo la proporción */
+    border-radius: 8px 8px 0 0;
+    /* Opcional: bordes redondeados en la parte superior */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2),
+        inset 1px 1px 5px rgba(255, 255, 255, 0.6);
+    /* Sombra exterior y efecto 3D */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* Borde suave */
+}
+
+
+
+/* II. PAGINA CICLOS */
+/* Contenedor principal de cada ciclo */
+.ciclo-container {
+    min-height: 100%;
+    /* Ajuste de altura mínima para todas las tarjetas */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Imagen dentro de la tarjeta */
+.ciclo-container img {
+    width: 100%;
+    height: 250px;
+    /* Altura fija para todas las imágenes */
+    object-fit: cover;
+    /* Mantiene las proporciones de la imagen */
+    border-radius: 8px;
+}
+
+
+.ciclo-nombre {
+    font-family: 'Bitter', serif;
+    /* Aplica la fuente de Google Fonts */
+    font-size: 1.5em;
+    /* Tamaño de la fuente para el nombre del ciclo */
+    font-weight: bold;
+    /* Grosor de la fuente */
+    color: #fff;
+    /* Cambia el color de texto a blanco */
+    background: linear-gradient(to top, #1C7CE0, #150051);
+    /* Fondo CCG degradado */
+    text-transform: uppercase;
+    /* Convierte a mayúsculas */
+    letter-spacing: 1px;
+    /* Espaciado entre letras */
+    text-align: center;
+    border-radius: 5px;
+    /* Bordes redondeados */
+}
+
+/* Opcional: mejora visual del texto */
+.typing-container p {
+    font-family: 'Montserrat', sans-serif;
+    /* Fuente elegida */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    /* Sombra sutil para dar profundidad */
+}
+
+
+
+
+/* ---------------------------------uso de media queries----------------------- */
+/* PARA CELULARES */
+/* Media query para pantallas extra pequeñas */
+@media (max-width: 320px) {
+    .hero h1 {
+        font-size: 3vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+
+}
+
+/* Media query para pantallas extra pequeñas */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 3vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+
+
+}
+
+/* Para pantallas pequeñas */
+@media (max-width: 576px) {
+
+
+    .hero h1 {
+        font-size: 3.7vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+
+
+}
+
+@media (max-width: 767px) {
+    .navbar {
+        position: relative;
+        /* O prueba con sticky */
+    }
+
+
+    .hero h1 {
+        font-size: 3.8vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+
+
+    .ciclo-container {
+        min-height: auto;
+        /* Ajusta la altura en dispositivos móviles */
+    }
+}
+
+
+/* PARA TABLETS */
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar {
+        position: relative;
+
+        /* O prueba con sticky */
+        .typing-container {
+            font-size: 6vw;
+            /* Fuente más pequeña en dispositivos pequeños */
+        }
+    }
+
+    .hero h1 {
+        font-size: 4vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+
+
+
+}
+
+@media (min-width: 992px) and (max-width: 1024px) {
+    .navbar {
+        position: relative;
+        /* O prueba con sticky */
+    }
+
+    .hero h1 {
+        font-size: 4.5vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+
+}
+
+
+/* PARA DISPOSITIVOS GRANDES--ESCRITORIOS */
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+    .navbar {
+        position: relative;
+        /* O prueba con sticky */
+    }
+
+    .hero h1 {
+        font-size: 4.5vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+
+}
+
+@media (min-width: 1201px) and (max-width: 1600px) {
+    .navbar {
+        position: relative;
+        /* O prueba con sticky */
+    }
+
+    .hero h1 {
+        font-size: 4.5vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+
+
+}
+
+/* PARA DISPOSITIVOS EXTRA GRANDES (Monitorees y TV 4K) */
+
+@media (min-width: 1601px) {
+    .navbar {
+        position: relative;
+        /* O prueba con sticky */
+    }
+
+    .hero h1 {
+        font-size: 4vh;
+        /* Reducir aún más el tamaño del texto */
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* Animación de escritura ---------------------------------------------------*/
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+/* Efecto de parpadeo en el cursor */
+@keyframes blink-cursor {
+    0% {
+        border-color: #007bff;
+    }
+
+    50% {
+        border-color: transparent;
+    }
+
+    100% {
+        border-color: #007bff;
+    }
+
+    /* Mantiene el cursor invisible al final */
+
+}

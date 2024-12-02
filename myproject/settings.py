@@ -132,4 +132,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Configuraciones de autenticación
 LOGIN_URL = 'login'  # Nombre de la URL para la vista de inicio de sesión
 LOGIN_REDIRECT_URL = 'course_list'  # Cambia a tu vista de lista de cursos
-LOGOUT_REDIRECT_URL = 'login'  # Redirige a la vista de inicio de sesión después de cerrar sesión
+LOGOUT_REDIRECT_URL = '/'  # Redirige a la vista de inicio de sesión después de cerrar sesión

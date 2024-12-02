@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagen Interactiva</title>
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .image-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Imagen */
+        .image-container img {
+            width: 800px; /* Ajusta según el tamaño de tu imagen */
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Áreas interactivas */
+        .hover-area {
+            position: absolute;
+            width: 80px; /* Ajusta al tamaño de cada persona */
+            height: 120px; /* Ajusta al tamaño de cada persona */
+            background-color: transparent; /* Completamente invisible */
+            cursor: pointer;
+        }
+
+        /* Tooltip */
+        #tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            display: none;
+            pointer-events: none;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="../3años/amigos.png" alt="Personas sentadas en una mesa">
+        <!-- Áreas interactivas -->
+        <div class="hover-area" style="top: 20%; left: 10%;" data-name="Persona 1"></div>
+        <div class="hover-area" style="top: 20%; left: 30%;" data-name="Persona 2"></div>
+        <div class="hover-area" style="top: 20%; left: 50%;" data-name="Persona 3"></div>
+        <div class="hover-area" style="top: 20%; left: 70%;" data-name="Persona 4"></div>
+        <div class="hover-area" style="top: 20%; left: 90%;" data-name="Persona 5"></div>
+    </div>
+    <div id="tooltip"></div>
+
+    <script>
+        const tooltip = document.getElementById('tooltip');
+        const hoverAreas = document.querySelectorAll('.hover-area');
+
+        hoverAreas.forEach(area => {
+            area.addEventListener('mouseover', (event) => {
+                const name = area.getAttribute('data-name');
+                tooltip.textContent = name;
+                tooltip.style.display = 'block';
+                tooltip.style.left = `${event.pageX + 10}px`;
+                tooltip.style.top = `${event.pageY + 10}px`;
+            });
+
+            area.addEventListener('mousemove', (event) => {
+                tooltip.style.left = `${event.pageX + 10}px`;
+                tooltip.style.top = `${event.pageY + 10}px`;
+            });
+
+            area.addEventListener('mouseout', () => {
+                tooltip.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -2,9 +2,11 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 
 class Course(models.Model):
     title = models.CharField(max_length=200, verbose_name='Título del curso')
+    slug = models.SlugField(unique=True, blank=True, null=True)  # Campo slug agregado
     description = models.TextField()
     level = models.CharField(
         max_length=100, 
@@ -20,23 +22,36 @@ class Course(models.Model):
         verbose_name_plural = "Cursos"
         ordering = ["title"] 
         
+    def save(self, *args, **kwargs):
+        # Si el slug está vacío, lo genera automáticamente a partir del título
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+    
     def __str__(self):
         return self.title
 
 class Chapter(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200)    
+    slug = models.SlugField(unique=True, blank=True)
     content = models.TextField()  # Aquí puedes usar TextField, pero en una implementación más compleja podrías manejar archivos o videos.
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='chapters')
     order = models.IntegerField()  # Para ordenar los capítulos 
     url_recursos = models.URLField(blank=True, null=True)
     fecha_publicacion = models.DateTimeField(blank=True, null=True)
     video_url = models.URLField(blank=True, null=True)
-    audio_url = models.URLField(blank=True, null=True)
     
+    
+         
     class Meta:
-        verbose_name = "Capítulos"
+        verbose_name = "Capítulo"
         verbose_name_plural = "Capítulos"
-        ordering = ["order"]       
+        ordering = ["order"]    
+        
+    def save(self, *args, **kwargs):
+        if not self.slug:  # Solo generar el slug si no existe
+            self.slug = slugify(self.title)  # Crear el slug a partir del título
+        super().save(*args, **kwargs)   
     
     def __str__(self):
         return f"{self.title}-{self.course}"   
